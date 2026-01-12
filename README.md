@@ -23,5 +23,3 @@ This repository contains **daily task-wise practice work** completed during the
 
 **Author:** Afthab Rahman  
 **Internship:** TNP India
-```
-
