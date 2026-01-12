@@ -1,4 +1,4 @@
-# TNP Internship – Web Development Tasks 🌐
+# TNP India Internship – Web Development Tasks 🌐
 
 This repository contains **daily task-wise practice work** completed during the  
 **Associate Consultant Internship at TNP India** (Digital Transformation – Web Development).
@@ -24,3 +24,4 @@ This repository contains **daily task-wise practice work** completed during the
 **Author:** Afthab Rahman  
 **Internship:** TNP India
 ```
+
