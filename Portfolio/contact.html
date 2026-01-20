@@ -1,132 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Afthab Rahman</title>
-    <meta name="description" content="Contact form to get in touch with Afthab Rahman.">
+    <meta name="description" content="Get in touch with Afthab Rahman using the contact form.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./styles/contact.css">
+    <link rel="stylesheet" href="./styles/common.css">
 </head>
+
 <body>
-    <header>
-        <h1>Contact</h1>
-        <p>Use the form below to get in touch.</p>
-    </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="skills.html">Skills</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-    <main>
-        <form action="#" method="post">
-            <fieldset>
-                <legend>Personal Information</legend>
+
+    <div class="page-container">
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+        </nav>
+
+        <header class="page-header">
+            <h1 class="page-title">Contact Me</h1>
+            <p class="page-subtitle">Feel free to reach out using the form below</p>
+        </header>
+
+        <main class="main-content">
+            <section class="contact-section">
+                <form class="contact-form" action="#" method="post">
+                    <fieldset class="form-fieldset" data-section="personal">
+                        <legend>Personal Information</legend>
+                        <div class="form-group">
+                            <label for="fullname">
+                                <i class="fa-solid fa-user icon"></i> Full Name
+                            </label>
+                            <input type="text" id="fullname" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                <i class="fa-solid fa-envelope icon"></i> Email
+                            </label>
+                            <input type="email" id="email" placeholder="example@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">
+                                <i class="fa-solid fa-phone icon"></i> Phone
+                            </label>
+                            <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX">
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-fieldset" data-section="professional">
+                        <legend>Professional Details</legend>
+                        <div class="form-group">
+                            <label for="role">
+                                <i class="fa-solid fa-briefcase icon"></i> Area
+                            </label>
+                            <input type="text" id="role" list="roles">
+                            <datalist id="roles">
+                                <option value="Web Developement">
+                                <option value="Mobile Application">
+                                <option value="Technical Support">
+                                <option value="Database Management">
+                                <option value="Quality & Assurance">
+                            </datalist>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">
+                                <i class=""></i> Query Type
+                            </label>
+                            <select id="experience">
+                                <option value="fresher">General Query</option>
+                                <option value="junior">Internship/Job Offer</option>
+                                <option value="mid">Other Assistance</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-fieldset" data-section="message">
+                        <legend>Message</legend>
+
+                        <div class="form-group">
+                            <label for="message">
+                                <i class="fa-solid fa-comment icon"></i> Your Message
+                            </label>
+                            <textarea id="message" rows="4" placeholder="Write your message here..."></textarea>
+                        </div>
+                    </fieldset>
+                    <div class="form-actions">
+                        <button type="submit" class="btn primary">
+                            <i class="fa-solid fa-paper-plane"></i> Submit
+                        </button>
+                        <button type="reset" class="btn secondary">
+                            <i class="fa-solid fa-rotate-left"></i> Reset
+                        </button>
+                    </div>
+                </form>
+            </section>
+            <section class="contact-info">
+                <h2 class="section-title">Direct Contact</h2>
                 <p>
-                    <label for="fullname">Full Name</label>
-                    <input id="fullname" type="text" required>
+                    <i class="fa-solid fa-envelope icon"></i>
+                    <a href="mailto:afthabr88@gmail.com">afthabr88@gmail.com</a>
                 </p>
                 <p>
-                    <label for="email">Email</label>
-                    <input id="email" type="email" required>
+                    <i class="fa-solid fa-phone icon"></i>
+                    <a href="tel:+917736174875">+91 77361 74875</a>
                 </p>
                 <p>
-                    <label for="phone">Phone</label>
-                    <input id="phone" type="tel">
+                    <i class="fa-solid fa-location-dot icon"></i>
+                    Perumbavoor, Kerala
                 </p>
-                <p>
-                    <label for="dob">Date of Birth</label>
-                    <input id="dob" type="date">
-                </p>
-                <p>
-                    <label for="age">Age</label>
-                    <input id="age" type="number" min="1" max="100">
-                </p>
-            </fieldset>
-            <fieldset>
-                <legend>Professional Details</legend>
-                <p>
-                    <label for="role">Role</label>
-                    <input id="role" list="roles">
-                    <datalist id="roles">
-                        <option value="Student">
-                        <option value="Intern">
-                        <option value="Developer">
-                        <option value="Recruiter">
-                    </datalist>
-                </p>
-                <p>
-                    <label for="experience">Experience Level</label>
-                    <select id="experience">
-                        <option value="fresher">Fresher</option>
-                        <option value="junior">Junior</option>
-                        <option value="mid">Mid-level</option>
-                        <option value="senior">Senior</option>
-                    </select>
-                </p>
-                <p>
-                    <label>Preferred Work Type</label>
-                    <input type="radio" id="remote" name="work" value="remote">
-                    <label for="remote">Remote</label>
-                    <input type="radio" id="onsite" name="work" value="onsite">
-                    <label for="onsite">Onsite</label>
-                </p>
-                <p>
-                    <label>Technologies Interested In</label>
-                    <input type="checkbox" id="html" value="html">
-                    <label for="html">HTML</label>
-                    <input type="checkbox" id="css" value="css">
-                    <label for="css">CSS</label>
-                    <input type="checkbox" id="js" value="js">
-                    <label for="js">JavaScript</label>
-                </p>
-            </fieldset>
-            <fieldset>
-                <legend>Additional Information</legend>
-                <p>
-                    <label for="website">Portfolio URL</label>
-                    <input id="website" type="url">
-                </p>
-                <p>
-                    <label for="resume">Upload Resume</label>
-                    <input id="resume" type="file">
-                </p>
-                <p>
-                    <label for="availability">Available From</label>
-                    <input id="availability" type="time">
-                </p>
-                <p>
-                    <label for="message">Message</label>
-                    <textarea id="message" rows="4"></textarea>
-                </p>
-            </fieldset>
-            <fieldset>
-                <legend>Confirmation</legend>
-                <p>
-                    <label for="rating">Interest Level</label>
-                    <input id="rating" type="range" min="0" max="10">
-                </p>
-                <p>
-                    <label for="color">Favorite Color</label>
-                    <input id="color" type="color">
-                </p>
-                <p>
-                    <label for="subscribe">Subscribe to updates</label>
-                    <input id="subscribe" type="checkbox">
-                </p>
-            </fieldset>
-            <button type="submit">Submit</button>
-            <button type="reset">Reset</button>
-        </form>
-        <address>
-            <p>Email: <a href="mailto:afthabr88@gmail.com">afthabr88@gmail.com</a></p>
-            <p>Phone: <a href="tel:+917736174875">+91 77361 74875</a></p>
-            <p>Location: Perumbavoor, Kerala</p>
-        </address>
-        <p>Last updated: <time datetime="2026-01-14">14 January 2026</time></p>
-    </main>
-    <footer>
-        <p>&copy; 2026 Afthab Rahman</p>
-    </footer>
+            </section>
+        </main>
+        <footer class="site-footer">
+            <p>&copy; 2026 Afthab Rahman</p>
+        </footer>
+    </div>
+
 </body>
+
 </html>

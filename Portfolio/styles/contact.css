@@ -1,10 +1,78 @@
-input[type="date"],
-input[type="email"],
-textarea {
-    border: 1px solid #45c780;
-    padding: 6px;
+.contact-form {
+    background-color: #fff;
+    padding: 20px;
+    position: relative;
 }
 
-input[required] {
-    border-left: 4px solid #02478d;
+.form-fieldset {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.form-fieldset:hover {
+    border-color: #0077b5;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #0077b5;
+    outline: none;
+}
+
+input[type="email"] {
+    background-color: #f9f9ff;
+}
+
+.form-actions {
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 6px 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn.primary {
+    background-color: #0077b5;
+    color: #fff;
+}
+
+.btn.secondary {
+    background-color: #777;
+    color: #fff;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+.contact-info {
+    background-color: #fff;
+    padding: 15px 20px;
+    margin-top: 30px;
+    border-top: 3px solid #0077b5;
+}
+
+.contact-info p {
+    margin: 10px;
 }

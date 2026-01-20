@@ -1,97 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Afthab Rahman</title>
-    <meta name="description" content="Selected projects by Afthab Rahman showcasing web development and software engineering work.">
+
+    <meta name="description"
+        content="Selected projects by Afthab Rahman showcasing web development and software engineering work.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles/projects.css">
+    <link rel="stylesheet" href="./styles/common.css">
 </head>
+
 <body>
-    <header>
-        <h1>Projects</h1>
-        <p>A selection of projects I have built and continue to improve.</p>
-    </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="skills.html">Skills</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-    <main>
-        <section>
-            <h2>Featured Work</h2>
-            <article>
-                <figure>
-                    <img src="assets/images/grabngo.png" alt="Grab N Go Supermarket Assistant interface screenshot" width="400">
-                    <figcaption>Grab N Go: Supermarket Assistant</figcaption>
-                </figure>
-                <p>
-                    Led the development of a full-stack web application using
-                    <abbr title="Python Web Framework">Flask</abbr> and Firebase,
-                    featuring item search and an interactive mini-map for supermarket navigation.
-                </p>
-                <p>
-                    Technologies:
-                    <abbr title="Python Programming Language">Python</abbr>,
-                    <abbr title="Flask Framework">Flask</abbr>,
-                    Firebase
-                </p>
-                <p>
-                    Developed during:
-                    <time datetime="2025-03">March 2025</time>
-                </p>
-                <meter value="9.5" min="0" max="10"></meter>
-                <p><a href="https://grab-and-go-0gmo.onrender.com/">View Project</a></p>
-            </article>
-            <article>
-                <figure>
-                    <img src="assets/images/movierecom.png" alt="Movie recommendation system output screen" width="400">
-                    <figcaption>Movie Recommendation System</figcaption>
-                </figure>
-                <p>
-                    Built a movie recommendation engine using a dataset of over
-                    10,000 titles and 100,000+ ratings, providing recommendations
-                    based on popularity and selected genres.
-                </p>
-                <p>
-                    Technologies:
-                    <abbr title="Python Programming Language">Python</abbr>,
-                    <abbr title="Numerical Python">NumPy</abbr>,
-                    Data Analysis
-                </p>
-                <p>
-                    Developed during:
-                    <time datetime="2024-03">March 2024</time>
-                </p>
-                <progress value="40" max="100"></progress>
-                <p><a href="#">View Project</a></p>
-            </article>
-            <article>
-                <figure>
-                    <img src="assets/images/cookmate.png" alt="CookMate recipe web application interface" width="400">
-                    <figcaption>CookMate</figcaption>
-                </figure>
-                <p>
-                    A dynamic recipe web application built using Angular,
-                    leveraging reusable components and REST API integration
-                    to display and manage food recipes.
-                </p>
-                <p>
-                    Technologies:
-                    <abbr title="Angular Framework">Angular</abbr>,
-                    <abbr title="REpresentational State Transfer Application Programming Interface">REST API</abbr>
-                </p>
-                <p>
-                    Developed during:
-                    <time datetime="2024-01">January 2024</time>
-                </p>
-                <progress value="30" max="100"></progress>
-                <p><a href="#">View Project</a></p>
-            </article>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 Afthab Rahman</p>
-    </footer>
+    <div class="page-container">
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <header class="page-header">
+            <h1 class="page-title">Projects</h1>
+            <p class="page-subtitle">Some of the work I have built and improved</p>
+        </header>
+
+        <main class="main-content">
+            <section class="projects-section">
+                <article class="project-card featured">
+                    <figure class="project-figure">
+                        <img src="assets/images/grabngo.png" alt="Grab N Go Supermarket Assistant interface"
+                            class="project-image">
+                        <figcaption class="project-caption">
+                            Grab N Go – Supermarket Assistant
+                        </figcaption>
+                    </figure>
+                    <p class="project-description">
+                        Full-stack supermarket assistant built using
+                        <abbr title="Python Web Framework">Flask</abbr> and Firebase
+                        with interactive item navigation.
+                    </p>
+                    <p class="project-tech">
+                        <span class="tech-label">Technologies:</span>
+                        Python, Flask, Firebase
+                    </p>
+                    <p class="project-meta">
+                        Developed in
+                        <time datetime="2025-03">March 2025</time>
+                    </p>
+                    <meter value="9.5" min="0" max="10"></meter>
+                    <a href="https://grab-and-go-0gmo.onrender.com/" class="project-link" target="_blank    ">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        View Project
+                    </a>
+                </article>
+                <article class="project-card">
+                    <figure class="project-figure">
+                        <img src="assets/images/movierecom.png" alt="Movie recommendation system output"
+                            class="project-image">
+                        <figcaption class="project-caption">
+                            Movie Recommendation System
+                        </figcaption>
+                    </figure>
+                    <p class="project-description">
+                        Recommendation engine built using a large movie dataset
+                        and genre-based filtering.
+                    </p>
+                    <p class="project-tech">
+                        <span class="tech-label">Technologies:</span>
+                        Python, NumPy
+                        Developed in
+                        <time datetime="2024-03">March 2024</time>
+                    </p>
+                    <progress value="40" max="100"></progress>
+                    <a href="https://www.github.com/4fthaab/movierecommendationsystem" class="project-link">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        View Project
+                    </a>
+                </article>
+                <article class="project-card">
+                    <figure class="project-figure">
+                        <img src="assets/images/cookmate.png" alt="CookMate recipe application interface"
+                            class="project-image">
+                        <figcaption class="project-caption">
+                            CookMate
+                        </figcaption>
+                    </figure>
+                    <p class="project-description">
+                        Recipe web application built using Angular
+                        with REST API integration.
+                    </p>
+                    <p class="project-tech">
+                        <span class="tech-label">Technologies:</span>
+                        Angular, REST API
+                    </p>
+                    <p class="project-meta">
+                        Developed in
+                        <time datetime="2024-01">January 2024</time>
+                    </p>
+                    <progress value="30" max="100"></progress>
+                    <a href="https://www.github.com/4fthaab/cookmate" class="project-link">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        View Project
+                    </a>
+                </article>
+            </section>
+        </main>
+        <footer class="site-footer">
+            <p>&copy; 2026 Afthab Rahman</p>
+        </footer>
+    </div>
+
 </body>
+
 </html>

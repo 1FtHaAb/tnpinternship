@@ -5,47 +5,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Afthab Rahman | Portfolio</title>
+
     <meta name="description"
-        content="Afthab Rahman is an aspiring web developer, a final year B.Tech Student from ICET and currently sering as Associate Consultant Intern at TNP India">
-    <meta name="keywords" content="Afthab, Portfolio, Ilahia, TNP, Web Developer">
+        content="Afthab Rahman is an aspiring web developer and Associate Consultant Intern at TNP India">
+    <meta name="keywords" content="Afthab, Portfolio, Web Developer, TNP">
     <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <nav>
-        <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="skills.html">Skills</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    <main>
-        <marquee>Welcome to My portfolio</marquee>
-        <img src="./assets/images/dp.jpg" alt="Afthab Rahman DP" width="150">
-        <h2>AFTHAB RAHMAN</h2>
-        <section id="intro">
-            <p>Hello! I am an Asscoiate Consultant Intern at <a href="https://tnpconsultants.com/en" target="_blank">TNP
-                    India</a></p>
-            <p>I'm also a final year Computer Science Engineering student at <a href="https://icet.ac.in"
-                    target="_blank">Ilahia College of Engineering and Technology, Muvattupuzha</a></p>
-            <p>I'm passionate about building meaningful digital solutions. With hands-on experience in UI design,
-                Frontend Development and Full-stack Web Applications, I love turning complex ideas into user-friendly
-                experiences.
-                If you're looking for a collaborator on innovative projects or open-source initiatives, I'd be thrilled
-                to connect and create something impactful together!</p>
-        </section>
-        <section id="socials">
-            <p><strong>Location: </strong> Perumbavoor, Kerala</p>
-            <p><strong>Mail: </strong><a href="mailto:afthabr88@gmail.com" target="_blank">afthabr88@gmail.com</a></p>
-            <p><strong>Mobile: </strong><a href="tel:7736174875">+91 77361 74875</a></p>
-            <p><strong>Github: </strong><a href="https://www.github.com/4fthaab">4fthaab</a></p>
-            <p><strong>LinkedIn: </strong><a href="https://www.linkedin.com/in/afthaab-rahman">afthaab-rahman</a></p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; Afthab Rahman | 2026</p>
-    </footer>
+    <div class="page-container">
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <header class="page-header">
+            <h1 class="page-title">Portfolio</h1>
+        </header>
+
+        <main class="main-content">
+            <section class="profile-section">
+                <img src="./assets/images/dp.jpg" alt="Afthab Rahman" class="profile-image">
+                <h2 class="profile-name">Afthab Rahman</h2>
+                <p class="profile-role">Associate Consultant Intern</p>
+            </section>
+
+            <section class="intro-section">
+                <p class="intro-text highlight">
+                    Hello! I am an Associate Consultant Intern at
+                    <a href="https://tnpconsultants.com/en" target="_blank" class="external-link">TNP India</a>.
+                </p>
+
+                <p class="intro-text">
+                    I am a final year Computer Science Engineering student at
+                    <a href="https://icet.ac.in" target="_blank" class="external-link">
+                        Ilahia College of Engineering and Technology</a>.
+                </p>
+
+                <p class="intro-text">
+                    I enjoy building meaningful digital solutions and transforming
+                    ideas into user-friendly experiences.
+                </p>
+            </section>
+
+            <section class="info-section">
+                <h3 class="section-title" style="margin-bottom: 10px; justify-self: center;">Connect Me Here</h3>
+                <p style="justify-self: center;">
+                    <span class="info-label"><i class="fa-solid fa-envelope"></i></span>
+                    <a href="mailto:afthabr88@gmail.com" class="info-link">afthabr88@gmail.com</a>
+                    <span class="info-label"><i class="fa-solid fa-phone"></i></span>
+                    <a href="tel:+917736174875" class="info-link">+91 77361 74875</a>
+                    <span class="info-label"><i class="fa-brands fa-github"></i></span>
+                    <a href="https://www.github.com/4fthaab" target="_blank" class="info-link">4fthaab</a>
+                    <span class="info-label"><i class="fa-brands fa-linkedin"></i></span>
+                    <a href="https://www.linkedin.com/in/afthaab-rahman" target="_blank"
+                        class="info-link">afthaab-rahman</a>
+                    <span class="info-label"><i class="fa-solid fa-location-dot"></i></span>
+                    <span class="info-value">Perumbavoor, Kerala</span>
+                </p>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Afthab Rahman</p>
+        </footer>
+
+    </div>
+
 </body>
 
 </html>

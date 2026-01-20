@@ -1,0 +1,52 @@
+.projects-section {
+    margin-top: 20px;
+}
+
+.project-card {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    position: relative;
+    
+}
+
+.project-card:hover {
+    background-color: #f1f1f1;
+}
+
+.project-image {
+    width: 50%;
+    margin-left: 25%;
+    border: 1px solid #ccc;
+}
+
+.project-caption {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+/* Text */
+.project-description {
+    margin: 10px 0;
+}
+
+.project-meta {
+    font-size: 13px;
+    color: #666;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #222;
+}
+
+.project-link:hover {
+    color: #0077b5;
+}
+
+a[target="_blank"] {
+    font-style: italic;
+}

@@ -1,37 +1,60 @@
-body {
-    background-color: #aec8e3;
-    color: #0f172a;
+.profile-section {
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
 }
 
-header {
-    background-color: #5a91d9;
+.profile-image {
+    width: 140px;
+    border-radius: 50%;
+    border: 3px solid #333;
 }
 
-footer {
-    background-color: #020617;
-    color: #e5e7eb;
+.profile-name {
+    font-size: 26px;
+    margin-top: 10px;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
+.profile-role {
+    color: #666;
 }
 
-h1,
-h2 {
-    color: #1e40af;
+.status-badge {
+    position: absolute;
+    top: 5px;
+    right: 30%;
+    background-color: green;
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 8px;
 }
 
-p {
-    color: #334155;
+.intro-text {
+    margin: 12px 0;
+    line-height: 1.6;
 }
 
-nav a {
-    text-decoration: none;
-    color: #1e293b;
-    margin-right: 15px;
+.external-link:hover {
+    color: #0077b5;
 }
 
-nav a:hover {
-    color: #2563eb;
-    text-decoration: underline;
+/* Info Section */
+.info-section {
+    margin-top: 20px;
+}
+
+.info-label:first-child {
+    font-weight: bold;
+    margin-left: 0px;
+}
+.info-label{
+    font-weight: bold;
+    margin-left: 30px;
+}
+.info-link {
+    color: #333;
+}
+
+.info-link:hover {
+    color: #0077b5;
 }

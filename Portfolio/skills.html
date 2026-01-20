@@ -1,99 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills | Afthab Rahman</title>
     <meta name="description" content="Technical and professional skills of Afthab Rahman.">
+    <link rel="stylesheet" href="./styles/skills.css">
+    <link rel="stylesheet" href="./styles/common.css">
 </head>
 <body>
-    <header>
-        <h1>Skills</h1>
-        <p>Technical and professional competencies developed through academics and hands-on experience.</p>
-    </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="skills.html">Skills</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-    <main>
-        <section>
-            <h2>Skill Summary Table</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Skill</th>
-                    <th>Category</th>
-                    <th>Level</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>HTML</td>
-                    <td>Web</td>
-                    <td>Advanced</td>
-                </tr>
-                <tr>
-                    <td>CSS</td>
-                    <td>Web</td>
-                    <td>Intermediate</td>
-                </tr>
-                <tr>
-                    <td>Python</td>
-                    <td>Programming</td>
-                    <td>Advanced</td>
-                </tr>
-                </tbody>
-            </table>
+
+    <div class="page-container">
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="skills.html" class="nav-link active">Skills</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <header class="page-header">
+            <h1 class="page-title">Skills</h1>
+            <p class="page-subtitle">
+                Technical and professional competencies built through learning and practice
+            </p>
+        </header>
+        <main class="main-content">
+            <section class="skills-table-section">
+                <table class="skills-table">
+                    <thead>
+                        <tr>
+                            <th>Skill</th>
+                            <th>Category</th>
+                            <th>Proficiency</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td>HTML</td>
+                            <td>Web</td>
+                            <td>Advanced</td>
+                        </tr>
+                        <tr>
+                            <td>CSS</td>
+                            <td>Web</td>
+                            <td>Intermediate</td>
+                        </tr>
+                        <tr>
+                            <td>JavaScript</td>
+                            <td>Web</td>
+                            <td>Beginner</td>
+                        </tr>
+                        <tr>
+                            <td>Python</td>
+                            <td>Programming</td>
+                            <td>Advanced</td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
-        <section>
-            <h2>Web Technologies</h2>
-            <ul>
-                <li><abbr title="HyperText Markup Language">HTML</abbr> <meter value="8" min="0" max="10"></meter></li>
-                <li><abbr title="Cascading Style Sheets">CSS</abbr> <meter value="7" min="0" max="10"></meter></li>
-                <li><abbr title="JavaScript">JS</abbr> <meter value="6" min="0" max="10"></meter></li>
-                <li>Angular <meter value="7" min="0" max="10"></meter></li>
-                <li>Bootstrap <meter value="6" min="0" max="10"></meter></li>
-                <li>Flask <meter value="6" min="0" max="10"></meter></li>
-            </ul>
-        </section>
-        <section>
-            <h2>Databases</h2>
-            <ul>
-                <li>MySQL <meter value="6" min="0" max="10"></meter></li>
-                <li>Firestore <meter value="7" min="0" max="10"></meter></li>
-            </ul>
-        </section>
-        <section>
-            <h2>Tools & Libraries</h2>
-            <ul>
-                <li>Git <meter value="7" min="0" max="10"></meter></li>
-                <li>Firebase Authentication <meter value="7" min="0" max="10"></meter></li>
-                <li>NumPy <meter value="6" min="0" max="10"></meter></li>
-                <li>Pandas <meter value="6" min="0" max="10"></meter></li>
-                <li>Matplotlib <meter value="5" min="0" max="10"></meter></li>
-                <li>Figma <meter value="6" min="0" max="10"></meter></li>
-                <li>Canva <meter value="6" min="0" max="10"></meter></li>
-            </ul>
-        </section>
-        <section>
-            <h2>Soft Skills</h2>
-            <ul>
-                <li>Leadership</li>
-                <li>Time Management</li>
-                <li>Teamwork</li>
-                <li>Critical Thinking</li>
-                <li>Attention to Detail</li>
-            </ul>
-        </section>
-        <aside>
-            <h2>Learning Focus</h2>
-            <p>Currently strengthening frontend fundamentals with HTML and preparing to advance into CSS, JavaScript, and React-based development.</p>
-        </aside>
-    </main>
-    <footer>
-        <p>&copy; 2026 Afthab Rahman</p>
-    </footer>
+
+            <section class="skills-groups">
+                <div class="skill-card" data-level="tools">
+                    <h3 class="skill-title">Tools & Libraries</h3>
+                    <ul class="skill-list">
+                        <li>Git</li>
+                        <li>Firebase</li>
+                        <li>NumPy</li>
+                        <li>Pandas</li>
+                        <li>Figma</li>
+                    </ul>
+                </div>
+                <div class="skill-card" data-level="soft">
+                    <h3 class="skill-title">Soft Skills</h3>
+                    <ul class="skill-list">
+                        <li>Leadership</li>
+                        <li>Teamwork</li>
+                        <li>Time Management</li>
+                        <li>Critical Thinking</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <footer class="site-footer">
+            <p>&copy; 2026 Afthab Rahman</p>
+        </footer>
+    </div>
 </body>
 </html>
