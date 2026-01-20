@@ -21,6 +21,13 @@ p {
     height: 50px;
 }
 
+a:hover {
+    color: chartreuse;
+}
+a:visited { 
+    color: red;
+}
+
 #sec-btn {
     width: 100px;
     margin-left: 10px;
@@ -37,7 +44,6 @@ p {
     background-color: black;
     color: aquamarine;
 }
-
 .selection {
     width: 200px;
     background-color: blanchedalmond;
@@ -94,4 +100,7 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: rgb(158, 158, 205);
+}
+tr:last-child {
+    background-color: aqua;
 }

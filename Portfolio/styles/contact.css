@@ -1,0 +1,10 @@
+input[type="date"],
+input[type="email"],
+textarea {
+    border: 1px solid #45c780;
+    padding: 6px;
+}
+
+input[required] {
+    border-left: 4px solid #02478d;
+}

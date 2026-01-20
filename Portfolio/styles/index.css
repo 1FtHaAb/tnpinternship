@@ -1,0 +1,37 @@
+body {
+    background-color: #aec8e3;
+    color: #0f172a;
+}
+
+header {
+    background-color: #5a91d9;
+}
+
+footer {
+    background-color: #020617;
+    color: #e5e7eb;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2 {
+    color: #1e40af;
+}
+
+p {
+    color: #334155;
+}
+
+nav a {
+    text-decoration: none;
+    color: #1e293b;
+    margin-right: 15px;
+}
+
+nav a:hover {
+    color: #2563eb;
+    text-decoration: underline;
+}
