@@ -43,8 +43,12 @@ input[type="email"] {
 }
 
 .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
     margin-top: 15px;
 }
+
 
 .btn {
     padding: 6px 14px;

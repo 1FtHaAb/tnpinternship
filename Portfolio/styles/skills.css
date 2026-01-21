@@ -30,11 +30,16 @@
 
 .skills-groups {
     margin-top: 25px;
+    display: flex;
+    gap: 3vw;
+    justify-items: center;
 }
 
 .skill-card {
     background-color: #fff;
-    padding: 18px;
+    padding: 3vw;
+    min-width: 45vw;
+    max-width: 45vw;
     margin-bottom: 18px;
     border-left: 4px solid #333;
 }

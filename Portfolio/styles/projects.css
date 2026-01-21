@@ -1,6 +1,10 @@
 .projects-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
     margin-top: 20px;
 }
+
 
 .project-card {
     background-color: #fff;
