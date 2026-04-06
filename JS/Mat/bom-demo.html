@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BOM Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .info { background: #e8f5e9; padding: 12px; margin: 8px 0; border-radius: 6px; }
+    button { margin: 4px; padding: 8px 14px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Browser Object Model (BOM) Demo</h1>
+
+  <!-- A) window object -->
+  <h3>Window Size</h3>
+  <div class="info" id="win-info"></div>
+
+  <!-- B) location object -->
+  <h3>Current URL Info</h3>
+  <div class="info" id="loc-info"></div>
+
+  <!-- C) navigator object -->
+  <h3>Browser Info (navigator)</h3>
+  <div class="info" id="nav-info"></div>
+
+  <!-- Visible: current time (updated every second, flashes on update) -->
+  <div id="time-info" class="info" style="display:block"></div>
+
+  <!-- D) Alert-based interactions -->
+  <h3>Dialogs</h3>
+  <button onclick="alert('Hello from window.alert!')">Alert</button>
+  <button onclick="showPrompt()">Prompt</button>
+  <button onclick="doRedirect()">Redirect (5s delay)</button>
+  <p id="msg" style="color:red"></p>
+
+  <script>
+    // --- setInterval demo: updates time every second and flashes ---
+    // Static info set once
+    document.getElementById("loc-info").innerHTML =
+      "<b>URL:</b> " + location.href + "<br><b>Protocol:</b> " + location.protocol;
+
+    document.getElementById("nav-info").innerHTML =
+      "<b>Platform:</b> " + navigator.platform +
+      "<br><b>Language:</b> " + navigator.language +
+      "<br><b>Online:</b> " + navigator.onLine;
+
+    var winInfo = document.getElementById("win-info");
+    var timeInfo = document.getElementById("time-info");
+
+    // tick() is called repeatedly by setInterval to demonstrate periodic work
+    function tick() {
+      var now = new Date();
+      // update time (visible)
+      timeInfo.textContent = "Current time: " + now.toLocaleTimeString();
+
+      // update window size each tick to show changing values when resized
+      winInfo.textContent = "Width: " + window.innerWidth + "px, Height: " + window.innerHeight + "px";
+
+      // brief highlight effect to draw attention to the change
+      timeInfo.style.background = "#fff59d"; // light yellow
+      setTimeout(function () { timeInfo.style.background = "#e8f5e9"; }, 300);
+    }
+
+    // Start the interval (demonstrates setInterval usage)
+    var intervalId = setInterval(tick, 1000);
+    // run immediately once so the page shows values without waiting
+    tick();
+
+    // --- prompt dialog ---
+    function showPrompt() {
+      const name = prompt("Your name?", "Intern");
+      if (name) alert("Welcome, " + name + "!");
+    }
+
+    // --- redirect after delay ---
+    function doRedirect() {
+      document.getElementById("msg").textContent = "Redirecting in 5 seconds...";
+      setTimeout(function () {
+        location.href = "https://www.google.com";  // uncomment to actually redirect
+        alert("Redirect would happen now! (commented out for safety)");
+        document.getElementById("msg").textContent = "";
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

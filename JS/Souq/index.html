@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOUQ &bull; Get It While It’s Hot</title>
+    <link rel="icon" type="image/x-icon" href="./assets/logo-square.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="script.js"></script>
+
+    <style>
+        @keyframes ping-pong {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(calc(-100% + 100vw));
+            }
+        }
+
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ping-pong 10s linear infinite alternate;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <section class="bg-white border-b sticky top-0 z-50">
+        <div class="flex items-center max-w-6xl mx-auto w-full px-2">
+            <div class="flex-1 flex items-center gap-6">
+                <span class="text-sm font-medium whitespace-nowrap">
+                    Hi! User
+                </span>
+                <div class="hidden lg:flex items-center border border-gray-300 rounded-full px-4 py-1 shadow-sm">
+                    <i class="fa fa-search text-gray-500 mr-2 px-2"></i>
+                    <input type="text" placeholder=""
+                        class="outline-none bg-transparent w-10 focus:w-64 transition-all duration-300">
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <a href="#" class="w-28 hover:scale-105 transition">
+                    <img src="./assets/logo-wide.png" class="w-full">
+                </a>
+            </div>
+            <div class="flex-1 flex justify-end items-center gap-6 text-sm">
+                <div class="hidden sm:flex gap-6">
+                    <a href="#" class="hover:text-blue-600">Daily Deals</a>
+                    <a href="#" class="hover:text-blue-600">Gift Cards</a>
+                    <a href="#" class="hover:text-blue-600">Help & Contact</a>
+                </div>
+                <div class="relative group hidden sm:block">
+                    <button class="text-lg">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                    <div
+                        class="absolute right-0 mt-3 w-52 bg-white shadow-lg rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                        <p class="text-sm font-semibold mb-2">Welcome</p>
+                        <a href="#" class="block text-sm py-1 hover:text-blue-600">Sign In</a>
+                        <a href="#" class="block text-sm py-1 hover:text-blue-600">Create Account</a>
+                    </div>
+                </div>
+                <div class="flex sm:hidden items-center gap-4">
+                    <button id="userToggle" class="text-lg">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                    <button id="mobile-menu-toggle" class="text-2xl">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileUserMenu" class="hidden sm:hidden w-full bg-white border-t shadow-md px-6 py-4">
+            <a href="#" class="block text-sm py-2">Sign In</a>
+            <a href="#" class="block text-sm py-2">Create Account</a>
+            <div class="border-t my-2"></div>
+            <a href="#" class="block text-sm py-2">My Orders</a>
+            <a href="#" class="block text-sm py-2">Wishlist</a>
+        </div>
+        <div id="mobileMenu" class="sm:hidden grid grid-cols-3 gap-4 p-4 bg-white shadow-md border-t">
+            <a href="#" class="text-center text-sm">Daily Deals</a>
+            <a href="#" class="text-center text-sm">Gift Cards</a>
+            <a href="#" class="text-center text-sm">Help & Contact</a>
+        </div>
+        <div class="sm:hidden px-4 pb-3">
+            <input type="text" class="w-full px-4 py-2 border rounded-full focus:outline-none"
+                placeholder="Search products...">
+        </div>
+    </section>
+
+    <section class="bg-white border-b">
+        <div
+            class="flex overflow-x-auto scroll-smooth gap-4 px-4 py-3 sm:overflow-visible sm:justify-center max-w-6xl mx-auto">
+            <a href="#"
+                class="flex justify-center items-center shrink-0 w-28 text-center px-2 py-2 rounded-full text-sm hover:bg-blue-100 hover:text-blue-600">All</a>
+            <a href="#electronics"
+                class="flex justify-center items-center shrink-0 w-28 text-center px-2 py-2 rounded-full text-sm hover:bg-blue-100 hover:text-blue-600">Electronics</a>
+            <a href="#fashion"
+                class="flex justify-center items-center shrink-0 w-28 text-center px-2 py-2 rounded-full text-sm hover:bg-blue-100 hover:text-blue-600">Fashion</a>
+            <a href="#groceries"
+                class="flex justify-center items-center shrink-0 w-28 text-center px-2 py-2 rounded-full text-sm hover:bg-blue-100 hover:text-blue-600">Groceries</a>
+            <a href="#home"
+                class="flex justify-center items-center shrink-0 w-28 text-center px-2 py-2 rounded-full text-sm hover:bg-blue-100 hover:text-blue-600">Home
+                & Kitchen</a>
+            <a href="#beauty"
+                class="flex justify-center items-center shrink-0 w-28 text-center px-2 py-2 rounded-full text-sm hover:bg-blue-100 hover:text-blue-600">Beauty</a>
+            <a href="#sports"
+                class="flex justify-center items-center shrink-0 w-28 text-center px-2 py-2 rounded-full text-sm hover:bg-blue-100 hover:text-blue-600">Sports</a>
+            <a href="#books"
+                class="flex justify-center items-center shrink-0 w-28 text-center px-2 py-2 rounded-full text-sm hover:bg-blue-100 hover:text-blue-600">Books</a>
+            <a href="#furniture"
+                class="flex justify-center items-center shrink-0 w-28 text-center px-2 py-2 rounded-full text-sm hover:bg-blue-100 hover:text-blue-600">Furniture</a>
+            <a href="#toys"
+                class="flex justify-center items-center shrink-0 w-28 text-center px-2 py-2 rounded-full text-sm hover:bg-blue-100 hover:text-blue-600">Toys</a>
+        </div>
+    </section>
+
+
+    <section class="bg-black text-white py-2 overflow-hidden whitespace-nowrap">
+        <div class="animate-marquee inline-block text-sm">
+            🔥 50% Off Personal & Beauty Products &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 🚚 Free Delivery on Orders Above
+            $500
+            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 💎 Premium Members Save More &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 🎉
+            Ramadan Sale Live Now
+        </div>
+    </section>
+
+    <section class="bg-white py-6">
+        <div class="max-w-8xl mx-auto px-4">
+            <div
+                class="flex overflow-x-auto scroll-smooth snap-x snap-mandatory rounded-lg shadow-lg scrollbar-hide gap-4">
+                <img src="./assets/banner 2.jpg" class="w-auto snap-center h-auto md:h-64 rounded-xl">
+                <img src="./assets/banner 1.jpg" class="w-auto snap-center h-auto md:h-64 rounded-xl">
+                <img src="./assets/banner 3.jpg" class="w-auto snap-center h-auto md:h-64 rounded-xl">
+                <img src="./assets/banner 6.jpg" class="w-auto snap-center h-auto md:h-64 rounded-xl">
+                <img src="./assets/banner 5.jpg" class="w-auto snap-center h-auto md:h-64 rounded-xl">
+                <img src="./assets/banner 4.jpg" class="w-auto snap-center h-auto md:h-64 rounded-xl">
+            </div>
+        </div>
+    </section>
+
+    <section id="electronics" class="relative bg-gradient-to-r from-slate-300 to-indigo-400 py-2">
+        <div class="max-w-8xl mx-auto px-4 relative">
+            <div class="absolute left-0 top-0 bottom-0 flex justify-center items-center z-0">
+                <h2 class="text-xl w-24 font-bold text-gray-600 uppercase tracking-widest pl-4">
+                    Electronics
+                </h2>
+            </div>
+
+            <div class="relative z-10 flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide">
+                <div class="shrink-0 w-32"></div>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://cdn.assets.prezly.com/cc1e3f98-2fc8-4410-8dde-76f813c9691c/Swift-Go-16-02.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Laptops</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://suprememobiles.in/cdn/shop/files/1_2ab6c803-16e7-4e9d-8177-09689c589a8a.webp?v=1738819846&width=1100"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Mobiles</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://r2media.horizondm.com/catalog/product/cache/eb4305db09fb6492bb059b8131f647e3/_/-/_-_2025-10-04t143604.964.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Tablets</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://www.theaudiostore.in/cdn/shop/files/sennheiser-accentum-hybrid-noise-canceling-wireless-headphones-black-41622095659263.jpg?v=1744394599"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Audio</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://www.gonoise.com/cdn/shop/products/1.5_ff788997-120a-4d9c-8b14-61eca1d973d9.png?v=1669869991"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Wearables</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://png.pngtree.com/png-clipart/20240625/original/pngtree-there-is-a-camera-with-the-word-canon-on-it-png-image_15408466.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Cameras</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://png.pngtree.com/png-vector/20240801/ourmid/pngtree-3d-game-controller-png-image_13331475.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Gaming</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://png.pngtree.com/png-vector/20240728/ourmid/pngtree-metal-portable-power-bank-png-image_13261164.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Accessories</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="fashion" class="relative bg-gradient-to-r from-orange-100 to-rose-200 my-1 py-2">
+        <div class="max-w-8xl mx-auto px-4 relative">
+            <div class="absolute left-0 top-0 bottom-0 flex justify justify-center items-center z-0">
+                <h2 class="text-xl font-bold text-gray-600 uppercase tracking-widest pl-4">
+                    Fashion
+                </h2>
+            </div>
+            <div class="relative z-10 flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide">
+                <div class="shrink-0 w-32"></div>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://img.freepik.com/premium-photo/fashion-attitude-portrait-man-white-background-trendy-casual-stylish-clothes-confidence-handsome-isolated-male-fashion-model-kneel-studio-urban-retro-2000s-style_590464-125627.jpg?w=360"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Men</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://www.nicepng.com/png/full/8-88585_women-fashion-png-example-of-magazine-cover.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Women</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/072/032/061/small/bother-sister-and-portrait-of-kids-fashion-in-studio-with-smile-bonding-or-siblings-in-kindergarten-together-boy-girl-and-children-with-cool-style-trendy-clothes-and-friends-on-white-background-photo.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Kids</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/046/323/598/small/pair-of-colorful-sports-shoes-for-active-lifestyle-png.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Footwear</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://static.vecteezy.com/system/resources/previews/052/935/241/non_2x/luxury-golden-watch-free-png.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Watches</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfN8xbP1GFQY4ym6IyP5unv2xklEj--DMwpw&s"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Jewellery</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://i.pinimg.com/736x/7e/70/e5/7e70e554016ef2ddf149f040ecd70d1e.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Bags and Accessories</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="groceries" class="relative bg-gradient-to-r from-emerald-200 to-green-300 mb-1 py-2">
+        <div class="max-w-8xl mx-auto px-4 relative">
+            <div class="absolute left-0 top-0 bottom-0 flex justify-center items-center z-0">
+                <h2 class="text-xl font-bold text-gray-600 uppercase tracking-widest pl-4">
+                    Groceries
+                </h2>
+            </div>
+
+            <div class="relative z-10 flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide">
+                <div class="shrink-0 w-32"></div>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://png.pngtree.com/png-clipart/20240508/original/pngtree-fruits-and-vegetables-png-image_15034923.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Fresh</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://png.pngtree.com/png-vector/20250429/ourmid/pngtree-an-assortment-of-dairy-products-including-milk-cheese-eggs-and-flour-png-image_16067127.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Diary & Eggs</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://previews.123rf.com/images/legendofsinbatt/legendofsinbatt1510/legendofsinbatt151000019/46234748-different-kinds-of-grains-five-grains-are-on-white-background.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Grains & Flour</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://chandravilas.com/wp-content/uploads/2023/06/Jumbo-All-Stars-Snack-Pack.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Snacks</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://thumbs.dreamstime.com/b/cans-beverages-19492376.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Beverages</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSypK8ibuUlwglnKVzyBVv7caZFqhMfyciXOA&s"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Bakery</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcDpUgciM58SlUsIstcj0RsYw2Um5q2iUn5Q&s"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Meat & Seafood</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="home" class="relative bg-gradient-to-r from-orange-200 to-amber-300 my-1 py-2">
+        <div class="max-w-8xl mx-auto px-4 relative">
+            <div class="absolute left-0 top-0 bottom-0 flex justify-center items-center z-0">
+                <h2 class="text-xl w-24 text-wrap font-bold text-gray-600 uppercase tracking-widest pl-4">
+                    Home & Kitchen
+                </h2>
+            </div>
+
+            <div class="relative z-10 flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide">
+                <div class="shrink-0 w-32"></div>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0ZuIkuqzFmB3PQWw0bZGXRr3DqPVzLLE6cg&s"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Appliances</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://images-cdn.ubuy.com.sa/660d897c45363d4caa2ef3e4-premium-10-piece-stainless-steel.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Cookware</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/052/943/386/small/a-selection-of-trendy-home-decor-items-isolated-on-a-transparent-background-free-png.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Home Decor</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAzL3Jhd3BpeGVsX29mZmljZV81Ml9waG90b190b3Bfdmlld19hX2JlZHJvb21fbW9ja3VwX3JlYWxpc3RpY19sZV8xZDYzN2YzZS1mMmJiLTQyMDQtYjE4Mi1mMDQzOGFiOWZlYTNfMS5qcGc.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Bedding</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://as1.ftcdn.net/jpg/02/56/07/78/1000_F_256077866_UTFUIdOjuGHo8AIQcKdf3EHpt1e2Yctt.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Cleaning Supplies</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://m.media-amazon.com/images/I/71zKyWNoqtL.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Dining</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="beauty" class="relative bg-gradient-to-r from-rose-100 to-purple-200 mb-1 py-2">
+        <div class="max-w-8xl mx-auto px-4 relative">
+            <div class="absolute w-24 left-0 top-0 bottom-0 flex justify-center items-center z-0">
+                <h2 class="text-xl font-bold text-gray-600 uppercase tracking-widest pl-14">
+                    Beauty & Personal Care
+                </h2>
+            </div>
+            <div class="relative z-10 flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide">
+                <div class="shrink-0 w-32"></div>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://i.pinimg.com/736x/78/3b/73/783b73b4af17f4fc9e2338c21f076963.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Skincare</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://media.istockphoto.com/id/656296680/photo/make-up-products-on-wooden-background.jpg?s=612x612&w=0&k=20&c=CmipX2xrrI0H1T5gITDsUclxRETK09JNKRK9HHZadCU="
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Makeup</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://png.pngtree.com/png-vector/20240611/ourmid/pngtree-hair-care-products-icon-on-a-square-button-illustration-vector-png-image_6997825.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Haircare</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlq4AbAlFH4eD3RI2hchjOvVUTdHaf7Gvapg&s"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Fragrance</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://www.shutterstock.com/image-photo/beard-trimmer-isolated-against-white-260nw-115594009.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Grooming</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://png.pngtree.com/png-vector/20240515/ourmid/pngtree-bathroom-accessories-set-png-image_12451447.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Bath & Body</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sports" class="relative bg-gradient-to-r from-blue-200 to-blue-400 py-2 bg">
+        <div class="max-w-8xl mx-auto px-4 relative">
+            <div class="absolute left-0 top-0 bottom-0 flex justify-center items-center z-0">
+                <h2 class="text-xl w-24 font-bold text-gray-600 uppercase tracking-widest pl-4">
+                    Sports
+                </h2>
+            </div>
+
+            <div class="relative z-10 flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide">
+                <div class="shrink-0 w-32"></div>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://media.gettyimages.com/id/185285227/photo/dumbbell.jpg?s=612x612&w=gi&k=20&c=xbtjCX6inPDzbf-ZWCQK6JB6z7de-qg55DY0mizYlxU="
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Fitness</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2u0v8Go7TBZ9W5Iyelvmkyu6WgSowjP_IJA&s"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Footwear</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://m.media-amazon.com/images/I/81oH3A+QJAL.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Indoor</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL_ZwmxYsR7BRCZyH4N_voILTGtgTImgyi5Q&s"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Outdoor</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://media.istockphoto.com/id/1409760480/vector/female-cyclist-riding-a-race-bike-vector-illustration.jpg?s=612x612&w=0&k=20&c=2PvG1zYMI5O3mzw180z3uEzuwZLNpw4i7cTO5jzy7Sk="
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Cycling</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://image.made-in-china.com/43f34j00gKABOCuyGnbE/Riding-Protective-Gear-Knee-Guard-Elbow-Support-for-Roller-Skating-Sports-for-Adults-and-Children.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Gear</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://5.imimg.com/data5/SN/RE/MY-7701655/sports-wear.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Apparels</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="books" class="relative bg-gradient-to-r from-yellow-200 to-yellow-800 my-1 py-2">
+        <div class="max-w-8xl mx-auto px-4 relative">
+            <div class="absolute left-0 top-0 bottom-0 flex justify-center items-center z-0">
+                <h2 class="text-xl font-bold text-gray-600 uppercase tracking-widest pl-4">
+                    Books
+                </h2>
+            </div>
+            <div class="relative z-10 flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide">
+                <div class="shrink-0 w-32"></div>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://tanyamarlow.com/wp-content/uploads/2016/12/best-fiction-2016-collage.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Fiction</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://miro.medium.com/v2/resize:fit:1400/1*Wq-FHDhevpiqBfu8ZT63Ow.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Non-Fiction</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://cdn.shopify.com/s/files/1/0588/5834/0425/files/Frog_and_Toad_Book_480x480.png?v=1730852652"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Kids</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://www.comicbookdaily.com/wp-content/uploads/2014/10/Marvel-Comics-75-Years-of-Cover-Art-cover.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Comics</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://www.dowsocial.com/wp-content/uploads/2023/03/1.png"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Business</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="https://tiimg.tistatic.com/fp/1/008/235/lightweight-rectangular-cardboard-academic-education-books-for-students-014.jpg"
+                        class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Academic</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="furniture" class="relative bg-gradient-to-r from-orange-300 to-stone-600 mb-1 py-2">
+        <div class="max-w-8xl mx-auto px-4 relative">
+            <div class="absolute left-0 top-0 bottom-0 flex justify-center items-center z-0">
+                <h2 class="text-xl font-bold text-gray-600 uppercase tracking-widest pl-4">
+                    Furnitures
+                </h2>
+            </div>
+
+            <div class="relative z-10 flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide">
+                <div class="shrink-0 w-32"></div>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="" class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Living</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="" class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Bedroom</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="" class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Offices</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="" class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Dining</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="" class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Home Decor</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="" class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Storage</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="toys" class="relative bg-gradient-to-r from-green-300 to-red-400 my-1 py-2">
+        <div class="max-w-8xl mx-auto px-4 relative">
+            <div class="absolute left-0 top-0 bottom-0 flex justify-center items-center z-0">
+                <h2 class="text-xl w-24 text-wrap font-bold text-gray-600 uppercase">
+                    Toys
+                </h2>
+            </div>
+
+            <div class="relative z-10 flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide">
+                <div class="shrink-0 w-32"></div>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="" class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Action Figures</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="" class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Dolls</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="" class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Games</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="" class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Educational</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="" class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Puzzles</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="" class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">RC Toys</p>
+                </a>
+                <a href="./category-explore.html"
+                    class="min-w-45 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition shrink-0">
+                    <img src="" class="w-full h-32 object-contain rounded-xl">
+                    <p class="mt-3 text-sm font-medium text-center">Baby</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById("mobile-menu-toggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        const userBtn = document.getElementById("userToggle");
+        const mobileUserMenu = document.getElementById("mobileUserMenu");
+
+        userBtn.addEventListener("click", () => {
+            if (window.innerWidth < 640) {
+                mobileUserMenu.classList.toggle("hidden");
+                mobileUserMenu.classList.toggle("block");
+            }
+        });
+    </script>
+
+    <a href="#"
+        class="fixed bottom-6 right-6 z-40 w-12 h-12  bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center hover: transition-all duration-300 hover:scale-110">
+        <i class="fa-solid fa-cart-shopping"></i>
+    </a>
+    <a href="#"
+        class="fixed bottom-6 left-6 z-40 w-12 h-12  bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center hover: transition-all duration-300 hover:scale-110">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+</body>
+
+</html>

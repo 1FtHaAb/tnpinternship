@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Snake Game</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <h2>Snake🐍Xenzia</h2>
   <p id="score-card">Score: <span id="score">0</span></p>
+  <div id="controls">
+    <label>Mode:</label>
+    <select id="modeSelect">
+      <option value="classic">Classic (Walls Kill)</option>
+      <option value="infinite">Infinite (Wrap Around)</option>
+    </select>
 
+    <label>Difficulty:</label>
+    <select id="difficultySelect">
+      <option value="150">Easy</option>
+      <option value="100">Medium</option>
+      <option value="50">Hard</option>
+    </select>
+  </div>
+  <p id="startTimer">Game starts in 5</p>
   <div id="game"></div>
-  
+  <h3>High Scores</h3>
+  <ul id="highScoresList" style="list-style: none;"></ul>
   <script src="snake.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>XHR (AJAX) Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    button { padding: 8px 14px; cursor: pointer; }
+    #output { margin-top: 10px; }
+    .user { background: #f0f0f0; padding: 8px; margin: 4px 0; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>XHR (AJAX) Demo</h1>
+  <button onclick="loadUsers()">Fetch Users (XHR)</button>
+  <div id="output"></div>
+
+  <script>
+    // loadUsers uses XMLHttpRequest (classic AJAX) instead of fetch()
+    function loadUsers() {
+      const output = document.getElementById("output");
+      output.textContent = "Loading...";
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/users", true); // CORS-enabled public API
+
+      // called when the request completes
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          try {
+            const users = JSON.parse(xhr.responseText); // parse JSON text
+            // build minimal HTML from data
+            output.innerHTML = users.map(u =>
+              `<div class="user"><b>${u.name}</b> — ${u.email}</div>`
+            ).join("");
+          } catch (e) {
+            output.textContent = "Parse error";
+          }
+        } else {
+          output.textContent = "Error: " + xhr.status;
+        }
+      };
+
+      // network-level error
+      xhr.onerror = function () { output.textContent = "Network error"; };
+
+      xhr.send(); // send the request
+    }
+
+  </script>
+</body>
+</html>

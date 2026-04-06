@@ -1,0 +1,844 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "iPhone 15",
+      "description": "Latest Apple smartphone with A16 Bionic chip, Dynamic Island, and improved 48MP camera.",
+      "price": 79999,
+      "brand": "Apple",
+      "category": "mobiles",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/mobiles/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/mobiles/image1.jpg"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 2,
+      "title": "Samsung Galaxy S24 Ultra",
+      "description": "Premium Android smartphone with Galaxy AI, Snapdragon 8 Gen 3, and a 200MP camera system.",
+      "price": 129999,
+      "brand": "Samsung",
+      "category": "mobiles",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/mobiles/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/mobiles/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 3,
+      "title": "Google Pixel 8 Pro",
+      "description": "Google's flagship phone with Tensor G3, advanced computational photography, and an immersive display.",
+      "price": 106999,
+      "brand": "Google",
+      "category": "mobiles",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/mobiles/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/mobiles/image1.jpg"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 4,
+      "title": "OnePlus 12",
+      "description": "High-performance smartphone featuring Hasselblad camera integration and ultra-fast charging.",
+      "price": 64999,
+      "brand": "OnePlus",
+      "category": "mobiles",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/mobiles/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/mobiles/image1.jpg"
+      ],
+      "rating": 4.5
+    },
+    {
+      "id": 5,
+      "title": "MacBook Air M2",
+      "description": "Incredibly thin and light laptop powered by the Apple M2 chip with up to 18 hours of battery life.",
+      "price": 114900,
+      "brand": "Apple",
+      "category": "laptops",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/laptops/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/laptops/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 6,
+      "title": "Dell XPS 13",
+      "description": "Compact premium Windows laptop with InfinityEdge display and Intel Core i7 processor.",
+      "price": 125000,
+      "brand": "Dell",
+      "category": "laptops",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/laptops/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/laptops/image1.jpg"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 7,
+      "title": "ASUS ROG Zephyrus G14",
+      "description": "Powerful gaming laptop with AMD Ryzen 9, NVIDIA RTX 4060, and AniMe Matrix display.",
+      "price": 145990,
+      "brand": "ASUS",
+      "category": "laptops",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/laptops/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/laptops/image1.jpg"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 8,
+      "title": "Lenovo ThinkPad X1 Carbon",
+      "description": "Durable and lightweight business laptop tailored for productivity and security.",
+      "price": 138000,
+      "brand": "Lenovo",
+      "category": "laptops",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/laptops/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/laptops/image1.jpg"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 9,
+      "title": "iPad Pro 11-inch",
+      "description": "The ultimate iPad experience with the breakthrough M2 chip and Liquid Retina display.",
+      "price": 81900,
+      "brand": "Apple",
+      "category": "tablets",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/tablets/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/tablets/image1.jpg"
+      ],
+      "rating": 4.9
+    },
+    {
+      "id": 10,
+      "title": "Samsung Galaxy Tab S9",
+      "description": "Premium Android tablet with Dynamic AMOLED 2X display, S Pen included, and water resistance.",
+      "price": 72999,
+      "brand": "Samsung",
+      "category": "tablets",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/tablets/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/tablets/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 11,
+      "title": "OnePlus Pad",
+      "description": "Smooth and fast tablet featuring a unique 7:5 ratio display and Dimensity 9000 processor.",
+      "price": 37999,
+      "brand": "OnePlus",
+      "category": "tablets",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/tablets/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/tablets/image1.jpg"
+      ],
+      "rating": 4.5
+    },
+    {
+      "id": 12,
+      "title": "Xiaomi Pad 6",
+      "description": "High-value tablet offering a 144Hz display, Snapdragon 870, and quad speakers.",
+      "price": 26999,
+      "brand": "Xiaomi",
+      "category": "tablets",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/tablets/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/tablets/image1.jpg"
+      ],
+      "rating": 4.4
+    },
+    {
+      "id": 13,
+      "title": "Sony WH-1000XM5",
+      "description": "Industry-leading noise-canceling wireless headphones with exceptional sound clarity.",
+      "price": 29990,
+      "brand": "Sony",
+      "category": "audio",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/audio/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/audio/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 14,
+      "title": "AirPods Pro (2nd Gen)",
+      "description": "True wireless earbuds with rich audio, active noise cancellation, and personalized spatial audio.",
+      "price": 24900,
+      "brand": "Apple",
+      "category": "audio",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/audio/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/audio/image1.jpg"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 15,
+      "title": "Bose QuietComfort Ultra",
+      "description": "Over-ear headphones featuring world-class ANC and immersive Bose spatial audio.",
+      "price": 35900,
+      "brand": "Bose",
+      "category": "audio",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/audio/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/audio/image1.jpg"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 16,
+      "title": "Sennheiser Momentum 4",
+      "description": "Audiophile-grade wireless headphones with an incredible 60-hour battery life.",
+      "price": 27990,
+      "brand": "Sennheiser",
+      "category": "audio",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/audio/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/audio/image1.jpg"
+      ],
+      "rating": 4.5
+    },
+    {
+      "id": 17,
+      "title": "Apple Watch Series 9",
+      "description": "Advanced smartwatch with a brighter display, double tap gesture, and health monitoring.",
+      "price": 41900,
+      "brand": "Apple",
+      "category": "wearables",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/wearables/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/wearables/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 18,
+      "title": "Samsung Galaxy Watch 6",
+      "description": "Sleek smartwatch with an enlarged display, personalized heart rate zones, and sleep coaching.",
+      "price": 29999,
+      "brand": "Samsung",
+      "category": "wearables",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/wearables/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/wearables/image1.jpg"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 19,
+      "title": "Garmin Fenix 7 Pro",
+      "description": "Rugged multisport GPS watch with solar charging, flashlight, and advanced performance metrics.",
+      "price": 75990,
+      "brand": "Garmin",
+      "category": "wearables",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/wearables/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/wearables/image1.jpg"
+      ],
+      "rating": 4.9
+    },
+    {
+      "id": 20,
+      "title": "Fitbit Charge 6",
+      "description": "Premium fitness tracker packed with health tools, built-in GPS, and Google app integration.",
+      "price": 14999,
+      "brand": "Fitbit",
+      "category": "wearables",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/wearables/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/wearables/image1.jpg"
+      ],
+      "rating": 4.4
+    },
+    {
+      "id": 21,
+      "title": "Sony Alpha a7 IV",
+      "description": "Hybrid full-frame mirrorless camera delivering stunning 33MP photos and 4K 60p video.",
+      "price": 215000,
+      "brand": "Sony",
+      "category": "cameras",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/cameras/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/cameras/image1.jpg"
+      ],
+      "rating": 4.9
+    },
+    {
+      "id": 22,
+      "title": "Canon EOS R6 Mark II",
+      "description": "High-speed full-frame mirrorless camera perfect for action photography and content creation.",
+      "price": 209990,
+      "brand": "Canon",
+      "category": "cameras",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/cameras/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/cameras/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 23,
+      "title": "Nikon Z6 II",
+      "description": "Versatile multimedia mirrorless camera boasting dual processors and excellent low-light performance.",
+      "price": 165000,
+      "brand": "Nikon",
+      "category": "cameras",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/cameras/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/cameras/image1.jpg"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 24,
+      "title": "GoPro HERO12 Black",
+      "description": "The ultimate action camera with HDR video, HyperSmooth 6.0 stabilization, and rugged build.",
+      "price": 37990,
+      "brand": "GoPro",
+      "category": "cameras",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/cameras/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/cameras/image1.jpg"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 25,
+      "title": "PlayStation 5 Console",
+      "description": "Next-gen console with ultra-high-speed SSD, ray tracing, and haptic feedback controller.",
+      "price": 54990,
+      "brand": "Sony",
+      "category": "gaming",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/gaming/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/gaming/image1.jpg"
+      ],
+      "rating": 4.9
+    },
+    {
+      "id": 26,
+      "title": "Xbox Series X",
+      "description": "The fastest, most powerful Xbox ever, featuring 4K gaming at up to 120 frames per second.",
+      "price": 54990,
+      "brand": "Microsoft",
+      "category": "gaming",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/gaming/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/gaming/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 27,
+      "title": "Nintendo Switch OLED",
+      "description": "Versatile hybrid console upgraded with a vibrant 7-inch OLED screen and enhanced audio.",
+      "price": 32999,
+      "brand": "Nintendo",
+      "category": "gaming",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/gaming/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/gaming/image1.jpg"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 28,
+      "title": "Steam Deck OLED",
+      "description": "Portable PC gaming powerhouse with an HDR OLED display and extended battery life.",
+      "price": 65000,
+      "brand": "Valve",
+      "category": "gaming",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/gaming/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/gaming/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 29,
+      "title": "Logitech MX Master 3S",
+      "description": "Advanced wireless mouse featuring an 8K DPI track-on-glass sensor and quiet clicks.",
+      "price": 9995,
+      "brand": "Logitech",
+      "category": "accessories",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/accessories/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/accessories/image1.jpg"
+      ],
+      "rating": 4.9
+    },
+    {
+      "id": 30,
+      "title": "Anker 737 Power Bank",
+      "description": "High-capacity 24,000mAh portable charger with 140W two-way fast charging capabilities.",
+      "price": 12999,
+      "brand": "Anker",
+      "category": "accessories",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/accessories/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/accessories/image1.jpg"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 31,
+      "title": "SanDisk 1TB Extreme Portable SSD",
+      "description": "Rugged and fast external solid-state drive with NVMe performance and drop protection.",
+      "price": 9499,
+      "brand": "SanDisk",
+      "category": "accessories",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/accessories/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/accessories/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 32,
+      "title": "Belkin MagSafe 3-in-1 Charger",
+      "description": "Wireless charging stand capable of simultaneously charging an iPhone, Apple Watch, and AirPods.",
+      "price": 14999,
+      "brand": "Belkin",
+      "category": "accessories",
+      "section": "electronics",
+      "thumbnail": "http://localhost:5173/product-images/accessories/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/accessories/image1.jpg"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 33,
+      "title": "Men's Slim Fit Cotton Shirt",
+      "description": "Premium breathable cotton shirt with a modern slim fit design, perfect for formal or semi-formal occasions.",
+      "price": 2499,
+      "brand": "Raymond",
+      "category": "men",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/men/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/men/image1.jpg"
+      ],
+      "rating": 4.5
+    },
+    {
+      "id": 34,
+      "title": "Classic Blue Denim Jeans",
+      "description": "Durable high-quality denim with a comfortable stretch, featuring a classic five-pocket styling.",
+      "price": 3299,
+      "brand": "Levi's",
+      "category": "men",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/men/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/men/image1.jpg"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 35,
+      "title": "Lightweight Puffer Jacket",
+      "description": "Water-resistant and windproof puffer jacket with recycled insulation for warmth without bulk.",
+      "price": 5999,
+      "brand": "Uniqlo",
+      "category": "men",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/men/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/men/image1.jpg"
+      ],
+      "rating": 4.4
+    },
+    {
+      "id": 36,
+      "title": "Crew Neck Graphic T-Shirt",
+      "description": "Soft jersey cotton tee featuring a unique minimalist graphic print on the chest.",
+      "price": 1299,
+      "brand": "H&M",
+      "category": "men",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/men/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/men/image1.jpg"
+      ],
+      "rating": 4.2
+    },
+    {
+      "id": 37,
+      "title": "Floral Print Summer Dress",
+      "description": "Elegant knee-length dress with a vibrant floral pattern and breathable fabric for sunny days.",
+      "price": 3499,
+      "brand": "Zara",
+      "category": "women",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/women/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/women/image1.jpg"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 38,
+      "title": "High-Waist Power Leggings",
+      "description": "Seamless moisture-wicking leggings designed for maximum flexibility and support during workouts.",
+      "price": 4500,
+      "brand": "Lululemon",
+      "category": "women",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/women/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/women/image1.jpg"
+      ],
+      "rating": 4.9
+    },
+    {
+      "id": 39,
+      "title": "Over-Sized Cashmere Sweater",
+      "description": "Luxuriously soft pure cashmere sweater with a relaxed fit and ribbed cuffs.",
+      "price": 8999,
+      "brand": "Marks & Spencer",
+      "category": "women",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/women/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/women/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 40,
+      "title": "Structured Office Blazer",
+      "description": "Tailored blazer with padded shoulders and a sleek lapel, ideal for professional settings.",
+      "price": 6299,
+      "brand": "Mango",
+      "category": "women",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/women/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/women/image1.jpg"
+      ],
+      "rating": 4.5
+    },
+    {
+      "id": 41,
+      "title": "Unisex Cotton Hoodie",
+      "description": "Cozy fleece-lined hoodie with a kangaroo pocket and adjustable drawstring hood for kids.",
+      "price": 1899,
+      "brand": "Gap Kids",
+      "category": "kids",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/kids/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/kids/image1.jpg"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 42,
+      "title": "Denim Overalls",
+      "description": "Classic adjustable denim dungarees with functional pockets, built for playtime durability.",
+      "price": 2299,
+      "brand": "OshKosh B'gosh",
+      "category": "kids",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/kids/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/kids/image1.jpg"
+      ],
+      "rating": 4.4
+    },
+    {
+      "id": 43,
+      "title": "Tiered Party Dress",
+      "description": "Beautiful multi-layered tulle dress with a sparkling waistline for special celebrations.",
+      "price": 2799,
+      "brand": "Carter's",
+      "category": "kids",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/kids/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/kids/image1.jpg"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 44,
+      "title": "Printed Pajama Set",
+      "description": "Soft organic cotton pajamas featuring fun space-themed prints for a comfortable sleep.",
+      "price": 999,
+      "brand": "Mothercare",
+      "category": "kids",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/kids/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/kids/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 45,
+      "title": "Air Max Running Shoes",
+      "description": "High-performance sneakers with visible Air cushioning and breathable mesh uppers.",
+      "price": 12495,
+      "brand": "Nike",
+      "category": "footwear",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/footwear/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/footwear/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 46,
+      "title": "Leather Chelsea Boots",
+      "description": "Timeless genuine leather boots with elasticated side panels and a pull tab for easy wear.",
+      "price": 7999,
+      "brand": "Clarks",
+      "category": "footwear",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/footwear/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/footwear/image1.jpg"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 47,
+      "title": "Classic White Sneakers",
+      "description": "Iconic low-top leather sneakers that pair perfectly with any casual outfit.",
+      "price": 6999,
+      "brand": "Adidas",
+      "category": "footwear",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/footwear/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/footwear/image1.jpg"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 48,
+      "title": "Ankle Strap Block Heels",
+      "description": "Stylish and stable block heels with an adjustable ankle strap for all-day comfort.",
+      "price": 3999,
+      "brand": "ALDO",
+      "category": "footwear",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/footwear/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/footwear/image1.jpg"
+      ],
+      "rating": 4.5
+    },
+    {
+      "id": 49,
+      "title": "Automatic Skeleton Watch",
+      "description": "Exquisite mechanical watch featuring a skeleton dial that reveals the internal movement.",
+      "price": 45000,
+      "brand": "Tissot",
+      "category": "watches",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/watches/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/watches/image1.jpg"
+      ],
+      "rating": 4.9
+    },
+    {
+      "id": 50,
+      "title": "Minimalist Analog Watch",
+      "description": "Elegant gold-plated watch with a thin leather strap and a clean, easy-to-read dial.",
+      "price": 14500,
+      "brand": "Fossil",
+      "category": "watches",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/watches/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/watches/image1.jpg"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 51,
+      "title": "Digital Sports Watch",
+      "description": "Shock-resistant digital watch with world time, stopwatch, and water resistance up to 200m.",
+      "price": 8995,
+      "brand": "Casio G-Shock",
+      "category": "watches",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/watches/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/watches/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 52,
+      "title": "Classic Chronograph Watch",
+      "description": "Professional stainless steel chronograph with date display and luminous hands.",
+      "price": 18900,
+      "brand": "Seiko",
+      "category": "watches",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/watches/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/watches/image1.jpg"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 53,
+      "title": "Diamond Solitaire Ring",
+      "description": "Stunning 18K white gold ring featuring a brilliant-cut ethically sourced solitaire diamond.",
+      "price": 125000,
+      "brand": "Tanishq",
+      "category": "jewellery",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/jewellery/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/jewellery/image1.jpg"
+      ],
+      "rating": 5.0
+    },
+    {
+      "id": 54,
+      "title": "Gold Plated Hoop Earrings",
+      "description": "Versatile lightweight hoops with a high-shine finish, perfect for everyday elegance.",
+      "price": 1499,
+      "brand": "Giva",
+      "category": "jewellery",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/jewellery/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/jewellery/image1.jpg"
+      ],
+      "rating": 4.5
+    },
+    {
+      "id": 55,
+      "title": "Sterling Silver Pendant",
+      "description": "Minimalist heart-shaped pendant on a delicate 925 sterling silver chain.",
+      "price": 2299,
+      "brand": "Swarovski",
+      "category": "jewellery",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/jewellery/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/jewellery/image1.jpg"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 56,
+      "title": "Pearl Bead Necklace",
+      "description": "Classic freshwater pearl necklace with a vintage-inspired sterling silver clasp.",
+      "price": 15000,
+      "brand": "Malabar Gold",
+      "category": "jewellery",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/jewellery/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/jewellery/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 57,
+      "title": "Leather Crossbody Bag",
+      "description": "Chic pebble-grain leather bag with an adjustable strap and multiple internal compartments.",
+      "price": 12900,
+      "brand": "Coach",
+      "category": "bags",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/bags/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/bags/image1.jpg"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 58,
+      "title": "Travel Carry-On Suitcase",
+      "description": "Hard-shell polycarbonate suitcase with 360-degree spinner wheels and a TSA-approved lock.",
+      "price": 8500,
+      "brand": "American Tourister",
+      "category": "bags",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/bags/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/bags/image1.jpg"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 59,
+      "title": "Wayfarer Polarized Sunglasses",
+      "description": "Classic frames with high-quality polarized lenses offering 100% UV protection.",
+      "price": 10900,
+      "brand": "Ray-Ban",
+      "category": "bags",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/bags/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/bags/image1.jpg"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 60,
+      "title": "Men's Bifold Leather Wallet",
+      "description": "Slim bifold wallet made from premium full-grain leather with RFID blocking technology.",
+      "price": 2499,
+      "brand": "Tommy Hilfiger",
+      "category": "bags",
+      "section": "fashion",
+      "thumbnail": "http://localhost:5173/product-images/bags/image1.jpg",
+      "images": [
+        "http://localhost:5173/product-images/bags/image1.jpg"
+      ],
+      "rating": 4.4
+    }
+  ]
+}

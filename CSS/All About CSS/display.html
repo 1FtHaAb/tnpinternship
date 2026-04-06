@@ -83,7 +83,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 2fr);
       gap: 10px;
     }
 
@@ -149,7 +149,7 @@
   </div>
 
   <div class="slide">
-    <h2>2. Modern Layouts</h2>
+    <h2>2. Layouts</h2>
     <h3>flex { display: flex; }</h3>
     <div class="container flex">
       <div class="box">A</div>
@@ -163,10 +163,24 @@
       <div class="box">2</div>
       <div class="box">3</div>
     </div>
+
+    <h3>table { display: table; }</h3>
+    <div class="table">
+      <div class="table-row">
+        <div class="table-cell">Cell A</div>
+        <div class="table-cell">Cell B</div>
+        <div class="table-cell">Cell C</div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell">Cell D</div>
+        <div class="table-cell">Cell E</div>
+        <div class="table-cell">Cell F</div>
+      </div>
+    </div>
   </div>
 
   <div class="slide">
-    <h2>4. flex-wrap</h2>
+    <h2>3. flex-wrap</h2>
 
     <h3>wrap { flex-wrap: wrap; }</h3>
     <div class="container" style="display: flex; flex-wrap: wrap; width: 200px; height: auto; gap: 10px;">
@@ -187,46 +201,6 @@
       <div class="box">4</div>
       <div class="box">5</div>
       <div class="box">6</div>
-    </div>
-  </div>
-
-  <div class="slide">
-    <h2>4. Specialized Displays</h2>
-    <h3>table { display: table; }</h3>
-    <div class="table">
-      <div class="table-row">
-        <div class="table-cell">Cell A</div>
-        <div class="table-cell">Cell B</div>
-        <div class="table-cell">Cell C</div>
-      </div>
-      <div class="table-row">
-        <div class="table-cell">Cell D</div>
-        <div class="table-cell">Cell E</div>
-        <div class="table-cell">Cell F</div>
-      </div>
-    </div>
-
-    <h3>contents { display: contents; }</h3>
-    <div class="container" style="background: #fee2e2; border-color: #ef4444;">
-      <div class="contents" style="background: yellow; border: 5px solid black;">
-        <div class="box">Container is ignored</div>
-        <div class="box">Layout skips to children</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="slide">
-    <h2>5. Removal vs. Hiding</h2>
-    <h3>none { display: none; }</h3>
-    <div class="container">
-      <div class="box none">Hidden</div>
-      <p>Element is completely gone from the flow.</p>
-    </div>
-
-    <h3>hidden { visibility: hidden; }</h3>
-    <div class="container">
-      <div class="box hidden">Invisible</div>
-      <p>^ Space is still reserved above.</p>
     </div>
   </div>
 

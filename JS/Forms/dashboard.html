@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-100">
+    <div class="flex min-h-screen">
+        <div class="w-64 bg-gray-900 text-white p-6">
+            <h2 class="text-xl font-bold mb-6">Blog Dashboard</h2>
+            <ul class="space-y-3">
+                <li class="cursor-pointer hover:text-blue-400" id="loadUsers">Load Users</li>
+                <li class="cursor-pointer hover:text-blue-400" id="loadPosts">Load Posts</li>
+                <li class="cursor-pointer hover:text-blue-400" id="logout">Logout</li>
+            </ul>
+        </div>
+        <div class="flex-1 p-8">
+            <div id="status" class="text-gray-600 mb-4"></div>
+            <div id="content" class="grid grid-cols-3 gap-4"></div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>

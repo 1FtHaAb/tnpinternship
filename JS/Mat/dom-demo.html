@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DOM Manipulation Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #box { padding: 20px; background: #eee; border: 2px solid #333; margin: 10px 0; }
+    button { margin: 4px; padding: 8px 14px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>DOM Manipulation Demo</h1>
+
+  <p id="greeting">Hello, I am the original text.</p>
+  <button onclick="changeText()">Change Text</button>
+
+  <div id="box">Style me!</div>
+  <button onclick="changeStyle()">Change Style</button>
+
+  <ul id="list"><li>Item 1</li></ul>
+  <button onclick="addItem()">Add Item</button>
+
+  <p>Clicks: <span id="count">0</span></p>
+  <button onclick="increment()">Click Me</button>
+
+  <script>
+    // --- Selecting elements & changing text ---
+    function changeText() {
+      document.getElementById("greeting").textContent = "Text changed by JS! 🎉";
+    }
+
+    // --- Changing styles dynamically ---
+    function changeStyle() {
+      const box = document.getElementById("box");
+      box.style.background = "#2196F3";
+      box.style.color = "white";
+      box.style.borderRadius = "10px";
+    }
+
+    // --- Creating & appending elements ---
+    let n = 1;
+    function addItem() {
+      const li = document.createElement("li");
+      li.textContent = "Item " + (++n) + " (added by JS)";
+      document.getElementById("list").appendChild(li);
+    }
+
+    // --- Handling click events ---
+    let clicks = 0;
+    function increment() {
+      document.getElementById("count").textContent = ++clicks;
+    }
+  </script>
+</body>
+</html>

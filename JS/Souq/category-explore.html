@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOUQ &bull; Mobiles</title>
+    <link rel="icon" type="image/x-icon" href="./assets/logo-square.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <section class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center">
+
+            <div class="flex items-center">
+                <a href="./index.html" class="w-28 hover:scale-105 transition">
+                    <img src="./assets/logo-wide.png" class="w-full">
+                </a>
+            </div>
+
+            <div class="flex-1 flex justify-center">
+                <div
+                    class="w-full max-w-lg flex items-center border border-gray-300 rounded-full px-4 py-2 shadow-sm md:mr-5">
+                    <i class="fa fa-search text-gray-500 mr-3"></i>
+                    <input type="text" class="w-full outline-none bg-transparent" placeholder="Search Mobiles">
+                </div>
+            </div>
+
+            <div class="flex items-center gap-6 text-sm">
+
+                <div class="hidden md:flex gap-6">
+                    <a href="#" class="hover:text-blue-600">Daily Deals</a>
+                    <a href="#" class="hover:text-blue-600">Gift Cards</a>
+                    <a href="#" class="hover:text-blue-600">Help</a>
+                </div>
+                <div class="relative group hidden sm:block">
+                    <button class="text-lg">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                    <div
+                        class="absolute right-0 mt-3 w-52 bg-white shadow-lg rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                        <a href="#" class="block text-sm py-1 hover:text-blue-600">My Orders</a>
+                        <a href="#" class="block text-sm py-1 hover:text-blue-600">Wishlist</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section
+        class="bg-gray-100 w-[30vw] h-screen fixed sm:block sm:w-[20vw] overflow-y-scroll scrollbar-hide pt-3 px-4">
+        <summary>
+            <h2 class="text-lg font-semibold mb-4">Brands</h2>
+            <div id="brand-container" class="space-y-2"></div>
+        </summary>
+    </section>
+
+    <section class="py-2 px-4">
+        <div id="product-container"
+            class="max-w-6xl ml-[30vw] grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:ml-[20vw] gap-6">
+        </div>
+    </section>
+
+    <a href="#"
+        class="fixed bottom-6 right-6 z-40 w-12 h-12  bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center hover: transition-all duration-300 hover:scale-110">
+        <i class="fa-solid fa-cart-shopping"></i>
+    </a>
+</body>
+
+</html>
