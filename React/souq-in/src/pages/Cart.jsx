@@ -6,12 +6,12 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const increaseQty = (item) => {
-    dispatch(addToCart(item)); // reuse addToCart to increase qty
+    dispatch(addToCart(item));
   };
 
   const decreaseQty = (item) => {
     if (item.qty === 1) {
-      dispatch(removeFromCart(item.id)); // ✅ use existing reducer
+      dispatch(removeFromCart(item.id));
       return;
     }
 
@@ -20,7 +20,7 @@ const Cart = () => {
     );
 
     localStorage.setItem("cart", JSON.stringify(updatedCart));
-    window.location.reload(); // keeping your current flow
+    window.location.reload();
   };
 
   const checkout = () => {
