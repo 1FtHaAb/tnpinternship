@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "question": "What is DIVA?",
+        "answer": "DIVA is an AI-powered platform designed to analyze data, generate insights, and help users make smarter decisions efficiently."
+    },
+    {
+        "id": "2",
+        "question": "Who can benefit from using DIVA?",
+        "answer": "Businesses, researchers, analysts, students, and organizations that work with data can benefit from using DIVA."
+    },
+    {
+        "id": "3",
+        "question": "What is the maximum size of data that DIVA can analyze?",
+        "answer": "DIVA can handle both small and large-scale datasets depending on the selected plan and system configuration."
+    },
+    {
+        "id": "4",
+        "question": "How does DIVA calculate its scores?",
+        "answer": "DIVA uses advanced algorithms, machine learning models, and data analysis techniques to calculate scores accurately."
+    },
+    {
+        "id": "5",
+        "question": "What type of Data can DIVA analyze?",
+        "answer": "DIVA can analyze structured and unstructured data including spreadsheets, databases, reports, and various digital datasets."
+    },
+    {
+        "id": "6",
+        "question": "Can DIVA integrate with other tools and platforms?",
+        "answer": "Yes, DIVA supports integration with multiple third-party tools, APIs, and platforms to improve workflow efficiency."
+    },
+    {
+        "id": "7",
+        "question": "How can I get in touch with the DIVA support team?",
+        "answer": "You can contact the DIVA support team through email, contact forms, or the official support channels available on the platform."
+    }
+]

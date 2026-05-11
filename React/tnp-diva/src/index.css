@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+:root {
+    --primary-color: #17192b;
+    --secondary-color: #20213e;
+    --text-color-main: #79eb90;
+    --bg-color: #17192b;
+    --font-main: "Space Grotesk", sans-serif;
+}
+
+body {
+    background-color: #17192b;
+    font-family: var(--font-main);
+}
