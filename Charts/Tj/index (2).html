@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+  </head>
+
+  <body>
+    <select id="chartSelector">
+      <option value="line">Line Chart</option>
+      <option value="box">Box Plot</option>
+      <option value="violin">Violin Plot</option>
+      <option value="scatter">Scatter Plot</option>
+      <option value="dca">Differential Capacity Analysis</option>
+      <option value="histogram">Histogram</option>
+      <option value="parcoords">Parallel Coordinates</option>
+      <option value="stacked">Stacked y-Axis</option>
+      <option value="bar">Bar Chart</option>
+    </select>
+
+    <div id="plot" style="width: 100%; height: 600px"></div>
+
+    <script>
+      const selector = document.getElementById("chartSelector");
+
+      selector.addEventListener("change", drawChart);
+
+      drawChart();
+
+      function drawChart() {
+        const type = selector.value;
+
+        if (type === "line") {
+          Plotly.newPlot("plot", [
+            {
+              x: [1, 2, 3, 4],
+              y: [10, 15, 13, 17],
+              mode: "lines",
+            },
+          ]);
+        }
+
+        if (type === "box") {
+          Plotly.newPlot("plot", [
+            {
+              y: [1, 2, 3, 4, 5, 6, 7],
+              type: "box",
+            },
+          ]);
+        }
+
+        if (type === "violin") {
+          let groupA = Array.from({ length: 200 }, () => Math.random() * 5 + 2);
+          let groupB = Array.from({ length: 200 }, () => Math.random() * 6 + 1);
+
+          Plotly.newPlot(
+            "plot",
+            [
+              {
+                y: groupA,
+                type: "violin",
+                name: "Dataset A",
+
+                box: { visible: true },
+                meanline: { visible: true },
+
+                points: "all",
+                jitter: 0.3,
+                pointpos: -1.5,
+
+                marker: { color: "#1f77b4" },
+                line: { color: "#1f77b4" },
+              },
+
+              {
+                y: groupB,
+                type: "violin",
+                name: "Dataset B",
+
+                box: { visible: true },
+                meanline: { visible: true },
+
+                points: "all",
+                jitter: 0.3,
+                pointpos: 1.5,
+
+                marker: { color: "#ff7f0e" },
+                line: { color: "#ff7f0e" },
+              },
+            ],
+            {
+              title: "Distribution Comparison",
+
+              yaxis: {
+                title: "Measurement Value",
+                gridcolor: "#eee",
+              },
+
+              legend: { orientation: "h" },
+
+              template: "plotly_white",
+            },
+          );
+        }
+        if (type === "scatter") {
+          Plotly.newPlot("plot", [
+            {
+              x: [1, 2, 3, 4],
+              y: [4, 1, 3, 5],
+              mode: "markers",
+              type: "scatter",
+            },
+          ]);
+        }
+
+        if (type === "dca") {
+          let traces = [];
+          let cycles = [0, 50, 100, 150];
+          let colors = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728"];
+
+          cycles.forEach((cycle, i) => {
+            let voltage = [];
+            let actual = [];
+            let predicted = [];
+
+            for (let v = 3.4; v < 3.9; v += 0.01) {
+              voltage.push(v);
+
+              // simulate degradation
+              let peakShift = 3.65 + cycle * 0.0002;
+              let peakHeight = 2 - cycle * 0.003;
+
+              let peak =
+                Math.exp(-Math.pow((v - peakShift) / 0.05, 2)) * peakHeight;
+              let base = 0.2 + (v - 3.4);
+
+              let val = base + peak;
+
+              actual.push(val);
+              predicted.push(val + (Math.random() * 0.08 - 0.04));
+            }
+
+            // actual line
+            // actual line with shading
+            traces.push({
+              x: voltage,
+              y: actual,
+              mode: "lines",
+              name: "Cycle " + cycle + " Actual",
+              line: { width: 3, color: colors[i] },
+              fill: "tozeroy",
+              fillcolor: colors[i] + "33", // light transparent fill
+            });
+
+            // predicted line
+            traces.push({
+              x: voltage,
+              y: predicted,
+              mode: "lines",
+              name: "Cycle " + cycle + " Predicted",
+              line: { dash: "dash", color: colors[i] },
+              opacity: 0.7,
+            });
+
+            // discrepancy shading
+            traces.push({
+              x: [...voltage, ...voltage.slice().reverse()],
+              y: [...actual, ...predicted.slice().reverse()],
+              fill: "toself",
+              fillcolor: "rgba(120,120,120,0.15)",
+              line: { color: "transparent" },
+              showlegend: false,
+            });
+          });
+
+          // peak markers
+          traces.push({
+            x: [3.65],
+            y: [2.2],
+            mode: "markers",
+            marker: { size: 12, color: "black" },
+            name: "Peak Position",
+          });
+
+          Plotly.newPlot("plot", traces, {
+            title: "Differential Capacity Analysis",
+
+            xaxis: {
+              title: "Voltage [V]",
+              gridcolor: "#eee",
+            },
+
+            yaxis: {
+              title: "dQ/dV [1/V]",
+              gridcolor: "#eee",
+            },
+
+            legend: { orientation: "h" },
+          });
+        }
+        if (type === "parcoords") {
+          const url =
+            "https://raw.githubusercontent.com/bcdunbar/datasets/master/parcoords_data.csv";
+
+          fetch(url)
+            .then((r) => r.text())
+            .then((text) => {
+              const rows = text.trim().split("\n");
+
+              const headers = rows[0].split(",");
+
+              const cols = headers.map(() => []);
+
+              // build column arrays
+              rows.slice(1).forEach((row) => {
+                const c = row.split(",");
+
+                c.forEach((val, i) => {
+                  const num = Number(val);
+                  if (!isNaN(num)) cols[i].push(num);
+                });
+              });
+
+              // create dimensions dynamically
+              const dimensions = headers.map((h, i) => ({
+                label: h,
+                values: cols[i],
+              }));
+
+              Plotly.newPlot(
+                "plot",
+                [
+                  {
+                    type: "parcoords",
+
+                    line: {
+                      color: cols[0], // color by first column
+                      colorscale: "Viridis",
+                    },
+
+                    dimensions: dimensions,
+                  },
+                ],
+                {
+                  title: "Multi-Axis Parallel Coordinates",
+                },
+                { displaylogo: false },
+              );
+            });
+        }
+
+        if (type === "stacked") {
+          Plotly.newPlot(
+            "plot",
+            [
+              {
+                x: ["A", "B", "C"],
+                y: [10, 15, 13],
+                type: "bar",
+                name: "Series 1",
+              },
+              {
+                x: ["A", "B", "C"],
+                y: [5, 7, 9],
+                type: "bar",
+                name: "Series 2",
+              },
+            ],
+            {
+              barmode: "stack",
+            },
+          );
+        }
+
+        if (type === "bar") {
+          Plotly.newPlot("plot", [
+            {
+              x: ["A", "B", "C"],
+              y: [5, 10, 7],
+              type: "bar",
+            },
+          ]);
+        }
+      }
+    </script>
+  </body>
+</html>

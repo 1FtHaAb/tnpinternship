@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  </head>
+
+  <body>
+    <div id="plot" style="width: 900px; height: 600px"></div>
+
+    <script>
+      const xs = [];
+      const ys = [];
+
+      for (let i = 0; i < 2000; i++) {
+        xs.push(Math.random() * 100);
+        ys.push(Math.random() * 100);
+      }
+
+      Plotly.newPlot(
+        "plot",
+        [
+          {
+            type: "scattergl",
+            mode: "markers",
+            x: xs,
+            y: ys,
+            marker: { size: 5 },
+          },
+        ],
+        {
+          dragmode: "zoom",
+          title: "Custom Zoom History",
+        },
+      );
+
+      const plot = document.getElementById("plot");
+
+      /* zoom history stack */
+      const zoomStack = [];
+
+      plot.on("plotly_relayout", function (e) {
+        if (e["xaxis.range[0]"]) {
+          zoomStack.push({
+            xmin: e["xaxis.range[0]"],
+            xmax: e["xaxis.range[1]"],
+            ymin: e["yaxis.range[0]"],
+            ymax: e["yaxis.range[1]"],
+          });
+
+          console.log("Zoom stored:", zoomStack.length);
+        }
+      });
+
+      /* override double click */
+
+      plot.on("plotly_doubleclick", function () {
+        if (zoomStack.length <= 1) return;
+        zoomStack.pop(); // remove current zoom
+        console.log(zoomStack);
+        const last = zoomStack[zoomStack.length - 1];
+        console.log(last);
+
+        Plotly.relayout("plot", {
+          "xaxis.range": [last.xmin, last.xmax],
+          "yaxis.range": [last.ymin, last.ymax],
+        });
+
+        return false; // prevent default reset
+      });
+    </script>
+  </body>
+</html>

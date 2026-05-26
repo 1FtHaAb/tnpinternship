@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  </head>
+
+  <body>
+    <h3>Streaming Scatter Plot</h3>
+
+    <div id="plot" style="width: 900px; height: 600px"></div>
+
+    <script>
+      const API = "http://localhost:3000/stream";
+
+      let cursor = 0;
+      let loading = false;
+
+      async function fetchChunk() {
+        if (loading) return;
+
+        loading = true;
+
+        const r = await fetch(`${API}?start=${cursor}`);
+        const data = await r.json();
+
+        cursor = data.next;
+
+        const xs = data.points.map((p) => p.x);
+        const ys = data.points.map((p) => p.y);
+
+        Plotly.extendTraces("plot", { x: [xs], y: [ys] }, [0]);
+
+        loading = false;
+      }
+
+      Plotly.newPlot(
+        "plot",
+        [
+          {
+            type: "scattergl",
+            mode: "markers",
+            x: [],
+            y: [],
+            marker: {
+              size: 3,
+              opacity: 0.6,
+            },
+          },
+        ],
+        {
+          title: "Streaming 1M Points",
+          xaxis: { range: [0, 100] },
+          yaxis: { range: [0, 100] },
+        },
+        { displaylogo: false },
+      );
+
+      /* stream points every 200ms */
+
+      setInterval(fetchChunk, 200);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+.unselectable {
+  -webkit-user-select: none;
+  user-select: none;
+}
