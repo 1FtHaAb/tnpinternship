@@ -190,13 +190,13 @@ const GridLayout = () => {
                 style={{ flex: 1, minHeight: 0, width: '100%', pointerEvents: 'all' }}
               >
                 {index % 3 === 0 && (
-                  <PlotlyLineWidget data={mockData} isEditMode={isEditMode} />
+                  <PlotlyLineWidget id={widget.id} data={mockData} isEditMode={isEditMode} />
                 )}
                 {index % 3 === 1 && (
-                  <PlotlyScatterWidget data={mockData} isEditMode={isEditMode} />
+                  <PlotlyScatterWidget id={widget.id} data={mockData} isEditMode={isEditMode} />
                 )}
                 {index % 3 === 2 && (
-                  <PlotlyBarWidget data={mockData} isEditMode={isEditMode} />
+                  <PlotlyBarWidget id={widget.id} data={mockData} isEditMode={isEditMode} />
                 )}
               </div>
             </div>
