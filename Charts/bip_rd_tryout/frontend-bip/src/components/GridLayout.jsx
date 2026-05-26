@@ -17,7 +17,10 @@ const GridLayout = () => {
   });
 
   const [widgets, setWidgets] = useState([{ id: "asc" }, { id: "13" }, { id: "35" }]);
-  const [layouts, setLayouts] = useState(JSON.parse(localStorage.getItem('layoutConfig')) || { lg: [], md: [], sm: [] });
+  const [layouts, setLayouts] = useState(() => {
+    const saved = localStorage.getItem('layoutConfig');
+    return saved ? JSON.parse(saved) : { lg: [], md: [], sm: [] };
+  });
   const [isEditMode, setIsEditMode] = useState(false);
   const mockData = useMemo(() => generateCellData(), []);
 
@@ -39,7 +42,9 @@ const GridLayout = () => {
       y: Infinity, // <- THIS makes it auto-place at bottom
       w: 2,
       h: 4,
-      isDraggable: false
+      isDraggable: false,
+      minH: 3,
+      maxH: 6,
     };
 
     setLayouts((prev) => ({
@@ -52,25 +57,18 @@ const GridLayout = () => {
   const toggleEditMode = () => {
     const nextMode = !isEditMode;
     setIsEditMode(nextMode);
+    const updateItemMode = (item) => ({
+      ...item,
+      minH: 3,
+      maxH: 6,
+      isDraggable: nextMode,
+      isResizable: nextMode,
+    });
 
     setLayouts((prev) => ({
-      lg: prev.lg.map((item) => ({
-        ...item,
-        isDraggable: nextMode,
-        isResizable: nextMode,
-      })),
-
-      md: prev.md.map((item) => ({
-        ...item,
-        isDraggable: nextMode,
-        isResizable: nextMode,
-      })),
-
-      sm: prev.sm.map((item) => ({
-        ...item,
-        isDraggable: nextMode,
-        isResizable: nextMode,
-      })),
+      lg: prev.lg.map(updateItemMode),
+      md: prev.md.map(updateItemMode),
+      sm: prev.sm.map(updateItemMode),
     }));
   };
 
@@ -78,7 +76,7 @@ const GridLayout = () => {
     setLayouts(allLayouts);
     console.log(allLayouts);
     const layoutConfig = JSON.stringify(allLayouts);
-    localStorage.setItem("layoutConfig",layoutConfig);
+    localStorage.setItem("layoutConfig", layoutConfig);
   };
 
   const gridItemStyle = {
@@ -103,28 +101,28 @@ const GridLayout = () => {
     >
       {/* Toolbar */}
       <div style={{ marginBottom: '20px', display: 'flex', gap: '12px' }}>
-          <button
-            onClick={addWidget}
-            style={{
-              padding: '10px 18px', borderRadius: '8px', border: 'none',
-              background: '#2563eb', color: '#fff', cursor: 'pointer', fontWeight: '600',
-            }}
-          >
-            + Add Graph
-          </button>
+        <button
+          onClick={addWidget}
+          style={{
+            padding: '10px 18px', borderRadius: '8px', border: 'none',
+            background: '#2563eb', color: '#fff', cursor: 'pointer', fontWeight: '600',
+          }}
+        >
+          + Add Graph
+        </button>
 
-          <button
-            onClick={(toggleEditMode)}
-            style={{
-              padding: '10px 18px', borderRadius: '8px', border: 'none',
-              background: isEditMode ? '#ef4444' : '#e2e8f0',
-              color: isEditMode ? '#fff' : '#475569',
-              cursor: 'pointer', fontWeight: '600',
-            }}
-          >
-            {isEditMode ? 'Done Editing' : 'Edit Dashboard'}
-          </button>
-        </div>
+        <button
+          onClick={(toggleEditMode)}
+          style={{
+            padding: '10px 18px', borderRadius: '8px', border: 'none',
+            background: isEditMode ? '#ef4444' : '#e2e8f0',
+            color: isEditMode ? '#fff' : '#475569',
+            cursor: 'pointer', fontWeight: '600',
+          }}
+        >
+          {isEditMode ? 'Done Editing' : 'Edit Dashboard'}
+        </button>
+      </div>
 
       {/* Empty State */}
       {widgets.length === 0 && (
@@ -146,69 +144,65 @@ const GridLayout = () => {
 
       {/* Grid */}
       {mounted && widgets.length > 0 && (
-                <Responsive
-                  className="layout"
-                  layouts={layouts}
-                  width={width}
-                  breakpoints={{ lg: 1200, md: 996, sm: 768 }}
-                  cols={{ lg: 2, md: 2, sm: 2 }}
-                  rowHeight={100}
-                  margin={[10, 10]}
-                  onLayoutChange={handleLayoutChange}
-                  isDraggable={isEditMode}
-                  isResizable={isEditMode}
-                  draggableHandle=".widget-drag-handle"
-                  // draggableCancel={
-                  //   isEditMode
-                  //     ? '.js-plotly-plot,.plotly,.modebar,.modebar-container,.modebar-btn'
-                  //     : ''
-                  // }
+        <Responsive
+          className="layout"
+          layouts={layouts}
+          width={width}
+          breakpoints={{ lg: 1200, md: 996, sm: 768 }}
+          cols={{ lg: 2, md: 2, sm: 2 }}
+          rowHeight={100}
+          margin={[10, 10]}
+          onLayoutChange={handleLayoutChange}
+          isDraggable={isEditMode}
+          isResizable={isEditMode}
+          draggableHandle=".widget-drag-handle"
+        >
+          {widgets.map((widget, index) => (
+            <div
+              key={widget.id}
+              style={{
+                ...gridItemStyle,
+                borderColor: isEditMode ? '#3b82f6' : '#e2e8f0',
+              }}
+            >
+              {isEditMode && (
+                <div
+                  className="widget-drag-handle z-10"
+                  style={{
+                    height: '32px',
+                    flexShrink: 0,
+                    background: '#f1f5f9',
+                    borderBottom: '1px solid #e2e8f0',
+                    cursor: 'grab',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '0 10px',
+                    fontSize: '12px',
+                    userSelect: 'none',
+                  }}
                 >
-                  {widgets.map((widget, index) => (
-                    <div
-                      key={widget.id}
-                      style={{
-                        ...gridItemStyle,
-                        borderColor: isEditMode ? '#3b82f6' : '#e2e8f0',
-                      }}
-                    >
-                      {isEditMode && (
-                        <div
-                          className="widget-drag-handle"
-                          style={{
-                            height: '32px',
-                            flexShrink: 0,
-                            background: '#f1f5f9',
-                            borderBottom: '1px solid #e2e8f0',
-                            cursor: 'grab',
-                            display: 'flex',
-                            alignItems: 'center',
-                            padding: '0 10px',
-                            fontSize: '12px',
-                            userSelect: 'none',
-                          }}
-                        >
-                          ⋮⋮ Drag Widget
-                        </div>
-                      )}
-                      <div
-                        className="nodrag"
-                        style={{ flex: 1, minHeight: 0, width: '100%', pointerEvents: 'all' }}
-                      >
-                        {index % 3 === 0 && (
-                          <PlotlyLineWidget data={mockData} isEditMode={isEditMode} />
-                        )}
-                        {index % 3 === 1 && (
-                          <PlotlyScatterWidget data={mockData} isEditMode={isEditMode} />
-                        )}
-                        {index % 3 === 2 && (
-                          <PlotlyBarWidget data={mockData} isEditMode={isEditMode} />
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </Responsive>
+                  ⋮⋮ Drag Widget
+                </div>
               )}
+              <div
+                className="nodrag"
+                style={{ flex: 1, minHeight: 0, width: '100%', pointerEvents: 'all' }}
+              >
+                {index % 3 === 0 && (
+                  <PlotlyLineWidget data={mockData} isEditMode={isEditMode} />
+                )}
+                {index % 3 === 1 && (
+                  <PlotlyScatterWidget data={mockData} isEditMode={isEditMode} />
+                )}
+                {index % 3 === 2 && (
+                  <PlotlyBarWidget data={mockData} isEditMode={isEditMode} />
+                )}
+              </div>
+            </div>
+          ))}
+        </Responsive>
+      )}
     </div>
   );
 };

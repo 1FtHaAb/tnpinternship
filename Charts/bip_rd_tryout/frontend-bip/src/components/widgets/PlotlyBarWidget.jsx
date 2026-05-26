@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import ReactPlotly from 'react-plotly.js';
 
 const Plot = ReactPlotly.default || ReactPlotly;
@@ -8,6 +8,13 @@ export default function PlotlyBarWidget({ data }) {
     const debounceRef = useRef(null);
     const cellIds = ['AG-CELL-00110-CLA.079', 'AG-CELL-00109-CLA.078', 'AG-CELL-00107-CLA.055'];
     const intervalBarCycles = [100, 200, 300, 400, 500, 600];
+
+    useEffect(() => {
+        const resize = () => { window.dispatchEvent(new Event('resize')); };
+        resize();
+        const timeout = setTimeout(resize, 300);
+        return () => clearTimeout(timeout);
+    }, []);
 
     // --- Fetch Logic (Categorical Extraction) ---
     const executeBufferedDataFetch = (startX, endX) => {
@@ -47,16 +54,16 @@ export default function PlotlyBarWidget({ data }) {
         barmode: 'stack',
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent',
-        xaxis: { 
-            title: 'Cycle Category', 
-            minallowed: -0.5, 
-            maxallowed: intervalBarCycles.length - 0.5 
+        xaxis: {
+            title: 'Cycle Category',
+            minallowed: -0.5,
+            maxallowed: intervalBarCycles.length - 0.5
         },
-        yaxis: { 
-            title: 'Efficiency (%)', 
+        yaxis: {
+            title: 'Efficiency (%)',
             range: [0, 100],
-            minallowed: -5, 
-            maxallowed: 105 
+            minallowed: -5,
+            maxallowed: 105
         }
     };
 
@@ -72,14 +79,14 @@ export default function PlotlyBarWidget({ data }) {
         <div className="w-full h-full flex flex-col p-4 box-border bg-white rounded-xl">
             <h3 className="text-sm font-semibold text-gray-700 mb-2 flex-shrink-0">Coulombic Efficiency Distribution</h3>
             <div className="flex-1 w-full min-h-0 relative">
-                <Plot 
-                    divId={`widget-bar-${Date.now()}`}
-                    data={traces} 
-                    layout={layout} 
+                <Plot
+                    divId={`widget-bar`}
+                    data={traces}
+                    layout={layout}
                     useResizeHandler={true}
-                    style={{ width: '100%', height: '100%', position: 'absolute' }}
+                    style={{ width: '100%', height: 'calc(100% - 60px)', position: 'absolute' }}
                     config={{ responsive: true, displayModeBar: true, displaylogo: false }}
-                    onRelayout={handleRelayout} 
+                    onRelayout={handleRelayout}
                 />
             </div>
         </div>

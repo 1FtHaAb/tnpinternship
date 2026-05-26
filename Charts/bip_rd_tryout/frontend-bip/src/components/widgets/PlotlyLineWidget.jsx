@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import ReactPlotly from 'react-plotly.js';
 
 const Plot = ReactPlotly.default || ReactPlotly;
@@ -13,6 +13,13 @@ export default function PlotlyLineWidget({ data }) {
     const xMin = cycles.length > 0 ? Math.min(...cycles) : 0;
     const xMax = cycles.length > 0 ? Math.max(...cycles) : 100;
     const xMargin = (xMax - xMin) * 0.05 || 5;
+
+    useEffect(() => {
+        const resize = () => { window.dispatchEvent(new Event('resize')); };
+        resize();
+        const timeout = setTimeout(resize, 300);
+        return () => clearTimeout(timeout);
+    }, []);
 
     const allVoltages = data.flatMap(d => cellIds.map(id => d[`${id}_voltage`]).filter(v => v !== undefined));
     const lineYMin = allVoltages.length > 0 ? Math.min(...allVoltages) : 0;
@@ -51,7 +58,7 @@ export default function PlotlyLineWidget({ data }) {
 
     // --- Layout & Traces ---
     const commonSpikeConfig = {
-        showspikes: true, spikemode: 'across+toaxis', spikesnap: 'cursor', 
+        showspikes: true, spikemode: 'across+toaxis', spikesnap: 'cursor',
         spikethickness: 1, spikedash: 'dash', spikecolor: '#999999'
     };
 
@@ -63,18 +70,18 @@ export default function PlotlyLineWidget({ data }) {
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent',
         hovermode: 'x unified',
-        xaxis: { 
-            title: 'Cycle Number', 
-            minallowed: Math.max(0, xMin - xMargin), 
-            maxallowed: xMax + xMargin, 
-            ...commonSpikeConfig 
+        xaxis: {
+            title: 'Cycle Number',
+            minallowed: Math.max(0, xMin - xMargin),
+            maxallowed: xMax + xMargin,
+            ...commonSpikeConfig
         },
-        yaxis: { 
-            title: 'Potential (V)', 
+        yaxis: {
+            title: 'Potential (V)',
             range: [lineYMin - lineYMargin * 0.2, lineYMax + lineYMargin * 0.2],
-            minallowed: lineYMin - lineYMargin, 
-            maxallowed: lineYMax + lineYMargin, 
-            ...commonSpikeConfig 
+            minallowed: lineYMin - lineYMargin,
+            maxallowed: lineYMax + lineYMargin,
+            ...commonSpikeConfig
         }
     };
 
@@ -91,14 +98,14 @@ export default function PlotlyLineWidget({ data }) {
         <div className="w-full h-full flex flex-col p-4 box-border">
             <h3 className="text-sm font-semibold text-gray-700 mb-2 flex-shrink-0">Potential vs. Test Cumulative Capacity</h3>
             <div className="flex-1 w-full min-h-0 relative">
-                <Plot 
+                <Plot
                     divId="widget-line-chart"
-                    data={traces} 
-                    layout={layout} 
+                    data={traces}
+                    layout={layout}
                     useResizeHandler={true}
-                    style={{ width: '100%', height: '100%', position: 'absolute' }}
+                    style={{ width: '100%', height: 'calc(100% - 60px)', position: 'absolute' }}
                     config={{ responsive: true, displayModeBar: true, displaylogo: false }}
-                    onRelayout={handleRelayout} 
+                    onRelayout={handleRelayout}
                 />
             </div>
         </div>
