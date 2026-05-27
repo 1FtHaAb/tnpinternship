@@ -17,24 +17,25 @@ export default function PlotlyScatterWidget({ id, data, isEditMode }) {
         } catch { return null; }
     });
 
-    const stateRef = useRef(viewState);
-    useEffect(() => {
-        stateRef.current = viewState;
-    }, [viewState]);
+    const [uiRev, setUiRev] = useState(() => viewState ? viewState.rev : Date.now());
 
     useEffect(() => {
         const handleStorageChange = (e) => {
-            if (e.key === STORAGE_KEY) setViewState(e.newValue ? JSON.parse(e.newValue) : null);
+            if (e.key === STORAGE_KEY) {
+                const newState = e.newValue ? JSON.parse(e.newValue) : null;
+                setViewState(newState);
+                setUiRev(newState ? newState.rev : Date.now()); 
+            }
         };
         window.addEventListener('storage', handleStorageChange);
         return () => window.removeEventListener('storage', handleStorageChange);
     }, [STORAGE_KEY]);
 
     useEffect(() => {
-        const resize = () => { window.dispatchEvent(new Event('resize')); };
-        resize();
-        const timeout = setTimeout(resize, 150);
-        return () => clearTimeout(timeout);
+        const timer = setTimeout(() => {
+            window.dispatchEvent(new Event('resize'));
+        }, 300);
+        return () => clearTimeout(timer);
     }, [isEditMode]);
 
     const cycles = data.map(d => d.cycle);
@@ -62,14 +63,17 @@ export default function PlotlyScatterWidget({ id, data, isEditMode }) {
     };
 
     const handleRelayout = (eventData) => {
+        const isUserZoom = 
+            'xaxis.range[0]' in eventData || 'xaxis.range' in eventData ||
+            'yaxis.range[0]' in eventData || 'yaxis.range' in eventData ||
+            'xaxis.autorange' in eventData || 'yaxis.autorange' in eventData;
+
+        if (!isUserZoom) return;
+
         if (debounceRef.current) clearTimeout(debounceRef.current);
         debounceRef.current = setTimeout(() => {
-            
-            const isXZoom = eventData['xaxis.range[0]'] !== undefined || eventData['xaxis.range'] || eventData['xaxis.autorange'];
-            const isYZoom = eventData['yaxis.range[0]'] !== undefined || eventData['yaxis.range'] || eventData['yaxis.autorange'];
-
-            if (isXZoom || isYZoom) {
-                let newState = { ...stateRef.current, rev: Date.now() };
+            setViewState(prev => {
+                let newState = { ...prev, rev: Date.now() };
 
                 if (eventData['xaxis.autorange']) delete newState.xRange;
                 else if (eventData['xaxis.range[0]'] !== undefined) newState.xRange = [eventData['xaxis.range[0]'], eventData['xaxis.range[1]']];
@@ -79,13 +83,13 @@ export default function PlotlyScatterWidget({ id, data, isEditMode }) {
                 else if (eventData['yaxis.range[0]'] !== undefined) newState.yRange = [eventData['yaxis.range[0]'], eventData['yaxis.range[1]']];
                 else if (eventData['yaxis.range']) newState.yRange = eventData['yaxis.range'];
 
-                stateRef.current = newState;
                 if (!newState.xRange && !newState.yRange) {
                     localStorage.removeItem(STORAGE_KEY);
                 } else {
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
                 }
-            }
+                return newState;
+            });
 
             if (eventData['xaxis.autorange']) {
                 cacheRef.current = { start: null, end: null };
@@ -102,10 +106,10 @@ export default function PlotlyScatterWidget({ id, data, isEditMode }) {
 
     const layout = {
         autosize: true,
-        margin: { t: 10, b: 50, l: 40, r: 20 },
-        legend: { orientation: 'h', yanchor: 'top', y: -0.1, xanchor: 'center', x: 0.5 },
-        uirevision: viewState ? viewState.rev : 'fixed_revision',
-        dragmode: 'zoom',
+        margin: { t: 0, b: 60, l: 40, r: 20 },
+        legend: { orientation: 'h', yanchor: 'top', y: -0.15, xanchor: 'center', x: 0.5 },
+        uirevision: uiRev,
+        dragmode: 'pan',
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent',
         hovermode: 'x unified',
@@ -114,14 +118,16 @@ export default function PlotlyScatterWidget({ id, data, isEditMode }) {
             minallowed: Math.max(0, xMin - xMargin), 
             maxallowed: xMax + xMargin, 
             ...commonSpikeConfig,
-            ...(viewState?.xRange ? { range: viewState.xRange, autorange: false } : { autorange: true })
+            autorange: viewState?.xRange ? false : true,
+            range: viewState?.xRange || undefined
         },
         yaxis: { 
             title: 'Coulombic Efficiency (%)', 
             minallowed: scatterYMin - scatterYMargin, 
             maxallowed: scatterYMax + scatterYMargin, 
             ...commonSpikeConfig,
-            ...(viewState?.yRange ? { range: viewState.yRange, autorange: false } : { range: [scatterYMin - scatterYMargin * 0.2, scatterYMax + scatterYMargin * 0.2] })
+            autorange: viewState?.yRange ? false : true,
+            range: viewState?.yRange || undefined
         }
     };
 
@@ -136,15 +142,18 @@ export default function PlotlyScatterWidget({ id, data, isEditMode }) {
     }));
 
     return (
-        <div className="w-full h-full flex flex-col p-4 box-border bg-white rounded-xl">
-            <h3 className="text-sm font-semibold text-gray-700 mb-2 flex-shrink-0">Coulombic Efficiency vs Cycle</h3>
-            <div className="flex-1 w-full min-h-0 relative">
+        <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', padding: '16px', boxSizing: 'border-box' }}>
+            <div style={{ flex: '0 0 auto', marginBottom: '8px', zIndex: 10 }}>
+                <h3 className="text-sm font-semibold text-gray-700 m-0">Coulombic Efficiency vs Cycle</h3>
+            </div>
+            
+            <div style={{ flex: '1 1 auto', position: 'relative', width: '100%', minHeight: 0 }}>
                 <Plot 
                     divId={`widget-scatter-${id}`}
                     data={traces} 
                     layout={layout} 
                     useResizeHandler={true}
-                    style={{ width: '100%',height: 'calc(100% - 60px)', position: 'absolute' }}
+                    style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, width: '100%', height: '100%' }}
                     config={{ responsive: true, displayModeBar: true, displaylogo: false, scrollZoom: true }}
                     onRelayout={handleRelayout} 
                 />

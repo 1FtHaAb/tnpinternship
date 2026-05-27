@@ -7,10 +7,9 @@ export default function PlotlyLineWidget({ id, data, isEditMode }) {
     const cacheRef = useRef({ start: null, end: null });
     const debounceRef = useRef(null);
     const cellIds = ['AG-CELL-00110-CLA.079', 'AG-CELL-00109-CLA.078', 'AG-CELL-00107-CLA.055'];
-
+    
     const STORAGE_KEY = `plotly_line_view_${id}`;
 
-    // 1. React State only updates on initial load or cross-tab sync
     const [viewState, setViewState] = useState(() => {
         try {
             const saved = localStorage.getItem(STORAGE_KEY);
@@ -18,22 +17,27 @@ export default function PlotlyLineWidget({ id, data, isEditMode }) {
         } catch { return null; }
     });
 
-    // 2. Silent Ref tracks the state locally without triggering re-renders
-    const stateRef = useRef(viewState);
-    useEffect(() => {
-        stateRef.current = viewState;
-    }, [viewState]);
+    const [uiRev, setUiRev] = useState(() => viewState ? viewState.rev : Date.now());
 
-    // Cross-tab sync
     useEffect(() => {
         const handleStorageChange = (e) => {
-            if (e.key === STORAGE_KEY) setViewState(e.newValue ? JSON.parse(e.newValue) : null);
+            if (e.key === STORAGE_KEY) {
+                const newState = e.newValue ? JSON.parse(e.newValue) : null;
+                setViewState(newState);
+                setUiRev(newState ? newState.rev : Date.now());
+            }
         };
         window.addEventListener('storage', handleStorageChange);
         return () => window.removeEventListener('storage', handleStorageChange);
     }, [STORAGE_KEY]);
 
-    // --- Dynamic Bounds ---
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            window.dispatchEvent(new Event('resize'));
+        }, 300);
+        return () => clearTimeout(timer);
+    }, [isEditMode]);
+
     const cycles = data.map(d => d.cycle);
     const xMin = cycles.length > 0 ? Math.min(...cycles) : 0;
     const xMax = cycles.length > 0 ? Math.max(...cycles) : 100;
@@ -44,15 +48,7 @@ export default function PlotlyLineWidget({ id, data, isEditMode }) {
     const lineYMax = allVoltages.length > 0 ? Math.max(...allVoltages) : 5;
     const lineYMargin = (lineYMax - lineYMin) * 0.1 || 0.5;
 
-    useEffect(() => {
-        const resize = () => { window.dispatchEvent(new Event('resize')); };
-        resize();
-        const timeout = setTimeout(resize, 150);
-        return () => clearTimeout(timeout);
-    }, [isEditMode]);
-
     const executeBufferedDataFetch = (startX, endX) => {
-        // ... (Keep your existing fetch logic)
         const BUFFER_SIZE = 200;
         const THRESHOLD_ZONE = 50;
         const currentCache = cacheRef.current;
@@ -67,16 +63,17 @@ export default function PlotlyLineWidget({ id, data, isEditMode }) {
     };
 
     const handleRelayout = (eventData) => {
+        const isUserZoom = 
+            'xaxis.range[0]' in eventData || 'xaxis.range' in eventData ||
+            'yaxis.range[0]' in eventData || 'yaxis.range' in eventData ||
+            'xaxis.autorange' in eventData || 'yaxis.autorange' in eventData;
+
+        if (!isUserZoom) return; 
+
         if (debounceRef.current) clearTimeout(debounceRef.current);
         debounceRef.current = setTimeout(() => {
-            
-            // Only process actual zoom/pan events
-            const isXZoom = eventData['xaxis.range[0]'] !== undefined || eventData['xaxis.range'] || eventData['xaxis.autorange'];
-            const isYZoom = eventData['yaxis.range[0]'] !== undefined || eventData['yaxis.range'] || eventData['yaxis.autorange'];
-
-            if (isXZoom || isYZoom) {
-                // Read from the silent ref, NOT the React state
-                let newState = { ...stateRef.current, rev: Date.now() };
+            setViewState(prev => {
+                let newState = { ...prev, rev: Date.now() };
 
                 if (eventData['xaxis.autorange']) delete newState.xRange;
                 else if (eventData['xaxis.range[0]'] !== undefined) newState.xRange = [eventData['xaxis.range[0]'], eventData['xaxis.range[1]']];
@@ -86,14 +83,13 @@ export default function PlotlyLineWidget({ id, data, isEditMode }) {
                 else if (eventData['yaxis.range[0]'] !== undefined) newState.yRange = [eventData['yaxis.range[0]'], eventData['yaxis.range[1]']];
                 else if (eventData['yaxis.range']) newState.yRange = eventData['yaxis.range'];
 
-                // Update the silent ref and local storage, but DO NOT call setViewState!
-                stateRef.current = newState;
                 if (!newState.xRange && !newState.yRange) {
                     localStorage.removeItem(STORAGE_KEY);
                 } else {
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
                 }
-            }
+                return newState;
+            });
 
             if (eventData['xaxis.autorange']) {
                 cacheRef.current = { start: null, end: null };
@@ -110,10 +106,11 @@ export default function PlotlyLineWidget({ id, data, isEditMode }) {
 
     const layout = {
         autosize: true,
-        margin: { t: 10, b: 50, l: 40, r: 20 },
-        legend: { orientation: 'h', yanchor: 'top', y: -0.1, xanchor: 'center', x: 0.5 },
-        uirevision: viewState ? viewState.rev : 'fixed_revision', 
-        dragmode: 'zoom', 
+        // Increased 't' to 40 so the modebar pushes down away from the top edge
+        margin: { t: 0, b: 60, l: 40, r: 20 },
+        legend: { orientation: 'h', yanchor: 'top', y: -0.15, xanchor: 'center', x: 0.5 },
+        uirevision: uiRev, 
+        dragmode: 'pan', 
         paper_bgcolor: 'transparent',
         plot_bgcolor: 'transparent',
         hovermode: 'x unified',
@@ -122,14 +119,16 @@ export default function PlotlyLineWidget({ id, data, isEditMode }) {
             minallowed: Math.max(0, xMin - xMargin),
             maxallowed: xMax + xMargin,
             ...commonSpikeConfig,
-            ...(viewState?.xRange ? { range: viewState.xRange, autorange: false } : { autorange: true })
+            autorange: viewState?.xRange ? false : true,
+            range: viewState?.xRange || undefined
         },
         yaxis: {
             title: 'Potential (V)',
             minallowed: lineYMin - lineYMargin,
             maxallowed: lineYMax + lineYMargin,
             ...commonSpikeConfig,
-            ...(viewState?.yRange ? { range: viewState.yRange, autorange: false } : { range: [lineYMin - lineYMargin * 0.2, lineYMax + lineYMargin * 0.2] })
+            autorange: viewState?.yRange ? false : true,
+            range: viewState?.yRange || undefined
         }
     };
 
@@ -142,20 +141,28 @@ export default function PlotlyLineWidget({ id, data, isEditMode }) {
         hoverinfo: 'all'
     }));
 
+    // Using STRICT inline styles for the layout to completely block RGL/Tailwind conflicts
     return (
-        <div className="w-full h-full flex flex-col p-4 box-border">
-            <h3 className="text-sm font-semibold text-gray-700 mb-2 flex-shrink-0">Potential vs. Test Cumulative Capacity</h3>
-            <div className="flex-1 w-full min-h-0 relative">
+        <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', padding: '16px', boxSizing: 'border-box' }}>
+            
+            {/* Header Area (Forced height, will never shrink) */}
+            <div style={{ flex: '0 0 auto', marginBottom: '8px', zIndex: 10 }}>
+                <h3 className="text-sm font-semibold text-gray-700 m-0">Potential vs. Test Cumulative Capacity</h3>
+            </div>
+            
+            {/* Chart Area (Forced boundary, strict absolute positioning for Plotly) */}
+            <div style={{ flex: '1 1 auto', position: 'relative', width: '100%', minHeight: 0 }}>
                 <Plot
                     divId={`widget-line-${id}`}
                     data={traces}
                     layout={layout}
                     useResizeHandler={true}
-                    style={{ width: '100%', height: 'calc(100% - 60px)', position: 'absolute' }}
+                    style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, width: '100%', height: '100%' }}
                     config={{ responsive: true, displayModeBar: true, displaylogo: false, scrollZoom: true }}
                     onRelayout={handleRelayout}
                 />
             </div>
+            
         </div>
     );
 }

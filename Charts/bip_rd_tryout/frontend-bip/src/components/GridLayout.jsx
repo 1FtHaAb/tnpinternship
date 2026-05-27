@@ -81,7 +81,7 @@ const GridLayout = () => {
 
   const gridItemStyle = {
     background: '#ffffff',
-    border: '1px solid #e2e8f0',
+    border: '1px solid #c4a0a0',
     borderRadius: '12px',
     display: 'flex',
     flexDirection: 'column',
